@@ -65,6 +65,8 @@
     <Compile Include="Assets\CardView.cs" />
     <Compile Include="Assets\Clickable.cs" />
     <Compile Include="Assets\GameViewSystem.cs" />
+    <Compile Include="Assets\HandBackground.cs" />
+    <Compile Include="Assets\LayoutCards.cs" />
     <Compile Include="Assets\PlayerTableView.cs" />
     <Compile Include="Assets\Scripts\Core\Aspect.cs" />
     <Compile Include="Assets\Scripts\Core\BaseState.cs" />

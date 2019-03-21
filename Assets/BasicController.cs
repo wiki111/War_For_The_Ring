@@ -96,7 +96,6 @@ public class BasicController : MonoBehaviour {
             {
                 owner.activeCardView.transform.localScale = new Vector3(1, 1, 1);
                 owner.activeCardView.transform.parent = playerTableView.transform;
-                owner.activeCardView.transform.localPosition = new Vector3(0, 0, -1);
                 owner.activeCardView = null;
             }
 
