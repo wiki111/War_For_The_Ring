@@ -61,23 +61,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BasicController.cs" />
-    <Compile Include="Assets\CardView.cs" />
-    <Compile Include="Assets\Clickable.cs" />
-    <Compile Include="Assets\GameViewSystem.cs" />
-    <Compile Include="Assets\HandBackground.cs" />
-    <Compile Include="Assets\LayoutCards.cs" />
-    <Compile Include="Assets\PlayerTableView.cs" />
+    <Compile Include="Assets\Scripts\Actions\Action.cs" />
+    <Compile Include="Assets\Scripts\Actions\ChangeTurnAction.cs" />
+    <Compile Include="Assets\Scripts\Actions\Phase.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BasicController.cs" />
     <Compile Include="Assets\Scripts\Core\Aspect.cs" />
     <Compile Include="Assets\Scripts\Core\BaseState.cs" />
     <Compile Include="Assets\Scripts\Core\Container.cs" />
     <Compile Include="Assets\Scripts\Core\StateMachine.cs" />
-    <Compile Include="Assets\Scripts\GameFactory.cs" />
+    <Compile Include="Assets\Scripts\GameStates\GlobalState.cs" />
+    <Compile Include="Assets\Scripts\GameStates\PlayerIdleState.cs" />
+    <Compile Include="Assets\Scripts\GameStates\SequenceState.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Clickable.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IAwake.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IDestroy.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IObserve.cs" />
     <Compile Include="Assets\Scripts\Models\Card.cs" />
+    <Compile Include="Assets\Scripts\Models\ControlModes.cs" />
     <Compile Include="Assets\Scripts\Models\Match.cs" />
     <Compile Include="Assets\Scripts\Models\Player.cs" />
+    <Compile Include="Assets\Scripts\Models\Zones.cs" />
     <Compile Include="Assets\Scripts\Notifications\NotificationCenter.cs" />
     <Compile Include="Assets\Scripts\Notifications\NotificationExtensions.cs" />
+    <Compile Include="Assets\Scripts\Systems\ActionSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\DataSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\GameViewSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\MatchSystem.cs" />
+    <Compile Include="Assets\Scripts\Utilities\Global.cs" />
+    <Compile Include="Assets\Scripts\Utilities\LayoutCards.cs" />
+    <Compile Include="Assets\Scripts\Views\CardView.cs" />
+    <Compile Include="Assets\Scripts\Views\ChangeTurnView.cs" />
+    <Compile Include="Assets\Scripts\Views\GameFactory.cs" />
+    <Compile Include="Assets\Scripts\Views\HandBackground.cs" />
+    <Compile Include="Assets\Scripts\Views\PlayerTableView.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
