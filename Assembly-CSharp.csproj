@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DrawCardsView.cs" />
     <Compile Include="Assets\Scripts\Actions\Action.cs" />
     <Compile Include="Assets\Scripts\Actions\ChangeTurnAction.cs" />
     <Compile Include="Assets\Scripts\Actions\DrawCardsAction.cs" />
@@ -96,6 +95,7 @@
     <Compile Include="Assets\Scripts\Utilities\LayoutCards.cs" />
     <Compile Include="Assets\Scripts\Views\CardView.cs" />
     <Compile Include="Assets\Scripts\Views\ChangeTurnView.cs" />
+    <Compile Include="Assets\Scripts\Views\DrawCardsView.cs" />
     <Compile Include="Assets\Scripts\Views\HandBackground.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerTableView.cs" />
     <Reference Include="UnityEditor.StandardEvents">
