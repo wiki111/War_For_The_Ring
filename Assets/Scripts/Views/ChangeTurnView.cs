@@ -55,7 +55,7 @@ public class ChangeTurnView : MonoBehaviour, IPointerClickHandler {
     void OnPrepareChangeTurn(object sender, object args)
     {
         var action = args as ChangeTurnAction;
-        action.after.viewer = ChangeTurnViewer;
+        action.perform.viewer = ChangeTurnViewer;
     }
 
     IEnumerator ChangeTurnViewer(IContainer game, Action action)

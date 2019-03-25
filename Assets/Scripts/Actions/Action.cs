@@ -10,14 +10,14 @@ public class Action
     public int priority;
     public int orderOfPlay;
     public bool isCanceled;
-    public Phase before;
-    public Phase after;
+    public Phase prepare;
+    public Phase perform;
 
     public Action()
     {
         id = Global.GenerateID(this.GetType());
-        before = new Phase(this, BeforeKeyFrame);
-        after = new Phase(this, AfterKeyFrame);
+        prepare = new Phase(this, BeforeKeyFrame);
+        perform = new Phase(this, AfterKeyFrame);
     }
 
     public virtual void BeforeKeyFrame(IContainer game)

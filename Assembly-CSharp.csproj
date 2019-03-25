@@ -61,14 +61,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DrawCardsView.cs" />
     <Compile Include="Assets\Scripts\Actions\Action.cs" />
     <Compile Include="Assets\Scripts\Actions\ChangeTurnAction.cs" />
+    <Compile Include="Assets\Scripts\Actions\DrawCardsAction.cs" />
     <Compile Include="Assets\Scripts\Actions\Phase.cs" />
     <Compile Include="Assets\Scripts\Controllers\BasicController.cs" />
     <Compile Include="Assets\Scripts\Core\Aspect.cs" />
     <Compile Include="Assets\Scripts\Core\BaseState.cs" />
     <Compile Include="Assets\Scripts\Core\Container.cs" />
     <Compile Include="Assets\Scripts\Core\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\Extensions\ListExtensions.cs" />
     <Compile Include="Assets\Scripts\GameStates\GlobalState.cs" />
     <Compile Include="Assets\Scripts\GameStates\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\GameStates\SequenceState.cs" />
@@ -85,13 +88,14 @@
     <Compile Include="Assets\Scripts\Notifications\NotificationExtensions.cs" />
     <Compile Include="Assets\Scripts\Systems\ActionSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\DataSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\GameFactory.cs" />
     <Compile Include="Assets\Scripts\Systems\GameViewSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\MatchSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\PlayerSystem.cs" />
     <Compile Include="Assets\Scripts\Utilities\Global.cs" />
     <Compile Include="Assets\Scripts\Utilities\LayoutCards.cs" />
     <Compile Include="Assets\Scripts\Views\CardView.cs" />
     <Compile Include="Assets\Scripts\Views\ChangeTurnView.cs" />
-    <Compile Include="Assets\Scripts\Views\GameFactory.cs" />
     <Compile Include="Assets\Scripts\Views\HandBackground.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerTableView.cs" />
     <Reference Include="UnityEditor.StandardEvents">

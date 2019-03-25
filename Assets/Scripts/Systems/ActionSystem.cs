@@ -51,10 +51,10 @@ public class ActionSystem : Aspect
     {
         this.PostNotification(beginSequenceNotification, action);
 
-        var phase = MainPhase(action.before);
+        var phase = MainPhase(action.prepare);
         while (phase.MoveNext()) { yield return null; }
 
-        phase = MainPhase(action.after);
+        phase = MainPhase(action.perform);
         while (phase.MoveNext()) { yield return null; }
 
         this.PostNotification(endSequenceNotification, action);

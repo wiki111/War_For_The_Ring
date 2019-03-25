@@ -73,8 +73,15 @@ public class BasicController : MonoBehaviour {
             //check state of the game here, and decide wheather to handle the event at this time or wait for change of game state
             var clickable = sender as Clickable;
             var cardView = clickable.GetComponent<CardView>();
+            if (cardView != null)
+            {
+                Debug.Log("Clicked card owner index : " + cardView.card.ownerIndex);
+                Debug.Log("Clicked card zone is : " + cardView.card.zone);
+                Debug.Log("Current player index is " + owner.game.GetMatch().currentPlayerIndex);
+            }
             if (cardView == null || cardView.card.zone != Zones.Hand || cardView.card.ownerIndex != owner.game.GetMatch().currentPlayerIndex)
                 return;
+            
             owner.activeCardView = cardView;
             owner.stateMachine.ChangeState<CardChosenState>();
         }
@@ -85,6 +92,7 @@ public class BasicController : MonoBehaviour {
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("Entered CardChosen controller state");
             owner.activeCardView.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
         }
 

@@ -51,5 +51,21 @@ public class GameViewSystem : MonoBehaviour, IAspect{
         var match = container.GetMatch();
         match.players[0].controlMode = ControlModes.User;
         match.players[1].controlMode = ControlModes.AI;
+
+        for (int i = 0; i < 10; i++)
+        {
+            var card = new Card();
+            card.zone = Zones.Deck;
+            card.ownerIndex = 0;
+            match.players[0].deck.Add(card);
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            var card = new Card();
+            card.zone = Zones.Deck;
+            card.ownerIndex = 1;
+            match.players[1].deck.Add(card);
+        }
     }
 }
