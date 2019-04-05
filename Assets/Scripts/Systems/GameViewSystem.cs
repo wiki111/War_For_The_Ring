@@ -54,7 +54,7 @@ public class GameViewSystem : MonoBehaviour, IAspect{
 
         for (int i = 0; i < 10; i++)
         {
-            var card = new Card();
+            var card = ScriptableObject.CreateInstance<Card>();
             card.zone = Zones.Deck;
             card.ownerIndex = 0;
             match.players[0].deck.Add(card);
@@ -62,7 +62,7 @@ public class GameViewSystem : MonoBehaviour, IAspect{
 
         for (int i = 0; i < 10; i++)
         {
-            var card = new Card();
+            var card = ScriptableObject.CreateInstance<Card>();
             card.zone = Zones.Deck;
             card.ownerIndex = 1;
             match.players[1].deck.Add(card);
