@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HandController.cs" />
+    <Compile Include="Assets\PlayerViewController.cs" />
     <Compile Include="Assets\Scripts\Actions\Action.cs" />
     <Compile Include="Assets\Scripts\Actions\ChangeTurnAction.cs" />
     <Compile Include="Assets\Scripts\Actions\DrawCardsAction.cs" />
@@ -98,17 +100,45 @@
     <Compile Include="Assets\Scripts\Views\DrawCardsView.cs" />
     <Compile Include="Assets\Scripts\Views\HandBackground.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerTableView.cs" />
+    <Compile Include="Assets\Scripts2\Data\DeckData.cs" />
+    <Compile Include="Assets\Scripts2\Data\PlayerData.cs" />
+    <Compile Include="Assets\Scripts2\Events\GameEvent.cs" />
+    <Compile Include="Assets\Scripts2\Events\GameEventListener.cs" />
+    <Compile Include="Assets\Scripts2\Logic\Card Logic\CardViewLogic.cs" />
+    <Compile Include="Assets\Scripts2\Logic\Card Logic\HandCardViewLogic.cs" />
+    <Compile Include="Assets\Scripts2\Models\Cards\Areas.cs" />
+    <Compile Include="Assets\Scripts2\Models\Cards\Card.cs" />
+    <Compile Include="Assets\Scripts2\Models\Cards\Types\SoldierCard.cs" />
+    <Compile Include="Assets\Scripts2\Models\Encounter.cs" />
+    <Compile Include="Assets\Scripts2\Models\Player.cs" />
+    <Compile Include="Assets\Scripts2\Models\Side.cs" />
+    <Compile Include="Assets\Scripts2\Models\Turn.cs" />
+    <Compile Include="Assets\Scripts2\States\State.cs" />
+    <Compile Include="Assets\Scripts2\Systems\GameSystem.cs" />
+    <Compile Include="Assets\Scripts2\Systems\PlayerSystem.cs" />
+    <Compile Include="Assets\Scripts2\Variables\BoolVariable.cs" />
+    <Compile Include="Assets\Scripts2\Variables\CardVariable.cs" />
+    <Compile Include="Assets\Scripts2\Variables\CardViewVariable.cs" />
+    <Compile Include="Assets\Scripts2\Variables\IntVariable.cs" />
+    <Compile Include="Assets\Scripts2\Variables\PlayerVariable.cs" />
+    <Compile Include="Assets\Scripts2\Variables\StateVariable.cs" />
+    <Compile Include="Assets\Scripts2\Variables\TurnVariable.cs" />
+    <Compile Include="Assets\Scripts2\Views\CardView.cs" />
+    <Compile Include="Assets\Scripts2\Views\ChangeTurnButton.cs" />
+    <Compile Include="Assets\Scripts2\Views\GameViewSystem.cs" />
+    <Compile Include="Assets\Scripts2\Views\InfoTextView.cs" />
+    <Compile Include="Assets\Scripts2\Views\TableController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
@@ -314,9 +344,6 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -325,9 +352,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/Maciej/Documents/WOPUnity/War_For_The_Ring/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
