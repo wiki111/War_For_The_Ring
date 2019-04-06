@@ -15,7 +15,7 @@ public class LayoutCards : MonoBehaviour {
     private float currentX = 0;
     private float spaceRequired = 0;
     private float availableSpace = 0;
-    private CardView[] cardViews;
+    private SCApproach.CardView[] cardViews;
 
     private void OnTransformChildrenChanged()
     {
@@ -29,7 +29,7 @@ public class LayoutCards : MonoBehaviour {
 
     private void UpdateParameters()
     {
-        cardViews = GetComponentsInChildren<CardView>();
+        cardViews = GetComponentsInChildren<SCApproach.CardView>();
         numberOfCards = cardViews.Length;
         usedGap = gap;
         currentX = 0;
@@ -52,7 +52,7 @@ public class LayoutCards : MonoBehaviour {
         
     }
     
-    private float positionCard(CardView cardView)
+    private float positionCard(SCApproach.CardView cardView)
     {
         cardView.transform.localPosition = new Vector3(0, 0, cardView.transform.localPosition.z);
         cardView.transform.position += new Vector3(currentX - centeringOffset, 0, 0);
