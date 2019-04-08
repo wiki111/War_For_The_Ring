@@ -21,7 +21,7 @@ public class GameSystem : ScriptableObject
         SetupPlayer(encounter.enemy, enemyData);
     }
 
-    private void SetupPlayer(SCApproach.Player player, PlayerData data)
+    private void SetupPlayer(Player player, PlayerData data)
     {
         player.hp.value = data.hp;
         player.resources.value = data.resources;
@@ -33,7 +33,7 @@ public class GameSystem : ScriptableObject
         player.graveyard.Clear();
         player.deck.Clear();
         
-        foreach(SCApproach.Card card in data.deck.cardsInDeck)
+        foreach(Card card in data.deck.cardsInDeck)
         {
             player.deck.Add(card);
         }

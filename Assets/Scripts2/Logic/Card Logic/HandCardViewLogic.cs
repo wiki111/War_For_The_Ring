@@ -6,16 +6,16 @@ public class HandCardViewLogic : CardViewLogic
 {
     public CardViewVariable currentCardView;
     public PlayerVariable currentPlayer;
-    public SCApproach.Player localPlayer;
+    public Player localPlayer;
 
-    public override SCApproach.CardView GetCurrentCard()
+    public override CardView GetCurrentCard()
     {
         return currentCardView.Get();
     }
 
-    public override void OnClick(SCApproach.CardView card)
+    public override void OnClick(CardView card)
     {
-        if (currentPlayer.Get() == card.owner && localPlayer == currentPlayer.Get())
+        if (currentPlayer.Get() == card.cardInstance.owner && localPlayer == currentPlayer.Get())
         {
             if (currentCardView.Get() == null)
             {

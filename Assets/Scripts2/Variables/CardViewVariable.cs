@@ -11,11 +11,11 @@ public class CardViewVariable : ScriptableObject
         this.value = instance;
     }
 
-    public SCApproach.CardView Get()
+    public CardView Get()
     {
         if(value != null)
         {
-            return value.GetComponent<SCApproach.CardView>();
+            return value.GetComponent<CardView>();
         }
         else
         {
@@ -28,7 +28,7 @@ public class CardViewVariable : ScriptableObject
     {
         if(value != null)
         {
-            value.GetComponent<SCApproach.CardView>().ToggleActive();
+            value.GetComponent<CardView>().ToggleActive();
             value = null;
         }
     }

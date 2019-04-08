@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using SCApproach;
 
 [CreateAssetMenu(menuName = "Game/Encounter")]
 public class Encounter : ScriptableObject
@@ -11,8 +10,8 @@ public class Encounter : ScriptableObject
     public TurnVariable currentTurn;
     public Turn playerTurn;
     public Turn enemyTurn;
-    public SCApproach.Player player;
-    public SCApproach.Player enemy;
+    public Player player;
+    public Player enemy;
     
     public void ChangeTurn()
     {

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace SCApproach
-{
+
     public class GameViewSystem : MonoBehaviour
     {
         public GameSystem gameSystem;
@@ -14,5 +13,3 @@ namespace SCApproach
         }
         
     }
-
-}

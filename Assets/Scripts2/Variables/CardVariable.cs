@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using SCApproach;
 using System;
 
 [CreateAssetMenu(menuName = "Game/Variables/Card Variable")]
@@ -8,9 +7,9 @@ using System;
 public class CardVariable : ScriptableObject
 {
     [SerializeField]
-    public SCApproach.Card value;
+    public Card value;
     
-    public SCApproach.Card Value
+    public Card Value
     {
         get
         {

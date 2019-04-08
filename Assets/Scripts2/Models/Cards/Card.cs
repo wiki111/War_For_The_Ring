@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace SCApproach{
     public abstract class Card : ScriptableObject
     {
+        public int id;
         public string name;
-        public string id;
         public int power;
         public int cost;
-        public Areas area;
+        public string description;
+        public Sprite artwork;
     }
-}

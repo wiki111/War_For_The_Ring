@@ -4,14 +4,14 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "Game/Variables/PlayerVariable")]
 public class PlayerVariable : ScriptableObject
 {
-    public SCApproach.Player value;
+    public Player value;
 
-    public void Set(SCApproach.Player player)
+    public void Set(Player player)
     {
         this.value = player;
     }
 
-    public SCApproach.Player Get()
+    public Player Get()
     {
         return this.value;
     }

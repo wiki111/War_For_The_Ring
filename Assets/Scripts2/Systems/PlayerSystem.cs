@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace SCApproach
-{
     [CreateAssetMenu(menuName = "Game/Systems/Player System")]
     public class PlayerSystem : ScriptableObject
     {
@@ -29,7 +27,7 @@ namespace SCApproach
         public void PlaceCardOnTable()
         {
             Debug.Log("Player owns card placed is : " + CheckIfCardInPlayersHand(currectCardViewActive));
-            SCApproach.Card cardToPlace = currectCardViewActive.Get().card;
+            Card cardToPlace = currectCardViewActive.Get().cardInstance.card;
             currentPlayer.Get().hand.Remove(cardToPlace);
             currentPlayer.Get().table.Add(cardToPlace);
             OnCardPlacedOnTableEvent.Raise();
@@ -39,8 +37,7 @@ namespace SCApproach
 
         private bool CheckIfCardInPlayersHand(CardViewVariable cardViewVar)
         {
-            return currentPlayer.Get().hand.Contains(cardViewVar.Get().card);
+            return currentPlayer.Get().hand.Contains(cardViewVar.Get().cardInstance.card);
         }
     }
 
-}

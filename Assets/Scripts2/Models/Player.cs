@@ -3,10 +3,8 @@ using UnityEditor;
 using System.Collections.Generic;
 using System;
 
-namespace SCApproach
-{
     [CreateAssetMenu(fileName = "NewPlayer", menuName = "Game/Player")]
-    [Serializable]
+    
     public class Player : ScriptableObject
     {
 
@@ -21,4 +19,3 @@ namespace SCApproach
         public List<Card> deck = new List<Card>();
     }
     
-}
