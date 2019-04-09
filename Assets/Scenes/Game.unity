@@ -2562,6 +2562,8 @@ MonoBehaviour:
   activeCardViewVar: {fileID: 11400000, guid: 71b1f3854eced1a408631937861d1660, type: 2}
   playerSystem: {fileID: 11400000, guid: b1010d3b06b1da441af162b209e0d54c, type: 2}
   GiveUpControlEvent: {fileID: 11400000, guid: fa17e84a0da54e8448010f92f214676a, type: 2}
+  OnCardPlacedOnTableEvent: {fileID: 11400000, guid: 5aba54dea9c3ba246a3451cca3fa7dfb,
+    type: 2}
 --- !u!1 &1589307706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2948,9 +2950,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1766938523}
   - component: {fileID: 1766938525}
-  - component: {fileID: 1766938527}
   - component: {fileID: 1766938524}
-  - component: {fileID: 1766938526}
+  - component: {fileID: 1766938528}
   m_Layer: 0
   m_Name: PlayerTableView
   m_TagString: Untagged
@@ -3001,49 +3002,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableView: {fileID: 1766938522}
-  OnTableClicked: {fileID: 11400000, guid: ff6644bf4e34c784eb98670367ba1403, type: 2}
---- !u!114 &1766938526
-MonoBehaviour:
+--- !u!61 &1766938528
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766938522}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9314d67a2584849a85e98a3e248572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1766938527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766938522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8f558c7e10ec649ae14af386324583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5aba54dea9c3ba246a3451cca3fa7dfb, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1766938525}
-        m_MethodName: PlaceCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 71b1f3854eced1a408631937861d1660,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: CardViewVariable, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.055131197, y: -0.027565897}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.049368, y: 1.7718562}
+  m_EdgeRadius: 0
 --- !u!1 &1768943816
 GameObject:
   m_ObjectHideFlags: 0
