@@ -368,6 +368,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189039811}
+  - component: {fileID: 189039812}
+  - component: {fileID: 189039813}
+  - component: {fileID: 189039814}
   m_Layer: 0
   m_Name: HeroView
   m_TagString: Untagged
@@ -390,6 +393,62 @@ Transform:
   m_Father: {fileID: 236516692}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &189039812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189039810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d6919aaa342494294f126157f020a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPText: {fileID: 407557127}
+  playerHP: {fileID: 11400000, guid: 986879e129209f647a03aa89b50086d8, type: 2}
+--- !u!114 &189039813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189039810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8f558c7e10ec649ae14af386324583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0e340d0243ffe3049a563819be7364ad, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 189039812}
+        m_MethodName: UpdatePlayerHPText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &189039814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189039810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab1412074ebbeb4ba6b10c417e5ae3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPlayerClicked: {fileID: 11400000, guid: ed52e9aebfb653a4c8d11b8f773442f9, type: 2}
 --- !u!1 &208511264
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +515,7 @@ Transform:
   - {fileID: 1881554430}
   - {fileID: 189039811}
   m_Father: {fileID: 1852180141}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &236516694
 MonoBehaviour:
@@ -1457,63 +1516,6 @@ Transform:
   m_Father: {fileID: 236516692}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &764564921
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 764564922}
-  - component: {fileID: 764564923}
-  m_Layer: 0
-  m_Name: Table
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &764564922
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764564921}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1852180141}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &764564923
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764564921}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16, y: 10}
-  m_EdgeRadius: 0
 --- !u!1 &861943244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,7 +1720,7 @@ Transform:
   - {fileID: 1336609177}
   - {fileID: 498878208}
   m_Father: {fileID: 1852180141}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135349937
 GameObject:
@@ -2062,7 +2064,7 @@ Transform:
   m_Children:
   - {fileID: 2136911313}
   m_Father: {fileID: 1852180141}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1340260297
 MonoBehaviour:
@@ -2394,6 +2396,9 @@ GameObject:
   - component: {fileID: 1588257723}
   - component: {fileID: 1588257724}
   - component: {fileID: 1588257725}
+  - component: {fileID: 1588257722}
+  - component: {fileID: 1588257727}
+  - component: {fileID: 1588257726}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2417,6 +2422,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1588257722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588257720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c39d5450a9ffc24698e314a84c94937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameViewSystem: {fileID: 1588257724}
+  cardController: {fileID: 1588257727}
 --- !u!114 &1588257723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,6 +2518,50 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1588257726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588257720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8f558c7e10ec649ae14af386324583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: fa17e84a0da54e8448010f92f214676a, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1588257722}
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1588257727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588257720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0e162fcb340434181bd72b06753215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeCardViewVar: {fileID: 11400000, guid: 71b1f3854eced1a408631937861d1660, type: 2}
+  playerSystem: {fileID: 11400000, guid: b1010d3b06b1da441af162b209e0d54c, type: 2}
+  GiveUpControlEvent: {fileID: 11400000, guid: fa17e84a0da54e8448010f92f214676a, type: 2}
 --- !u!1 &1589307706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,7 +2895,7 @@ Transform:
   m_Children:
   - {fileID: 1768943817}
   m_Father: {fileID: 1852180141}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1723463425
 BoxCollider2D:
@@ -2887,6 +2950,7 @@ GameObject:
   - component: {fileID: 1766938525}
   - component: {fileID: 1766938527}
   - component: {fileID: 1766938524}
+  - component: {fileID: 1766938526}
   m_Layer: 0
   m_Name: PlayerTableView
   m_TagString: Untagged
@@ -2937,7 +3001,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableView: {fileID: 1766938522}
-  OnPlaceCardEvent: {fileID: 11400000, guid: ff6644bf4e34c784eb98670367ba1403, type: 2}
+  OnTableClicked: {fileID: 11400000, guid: ff6644bf4e34c784eb98670367ba1403, type: 2}
+--- !u!114 &1766938526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766938522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9314d67a2584849a85e98a3e248572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1766938527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3270,7 +3346,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 764564922}
   - {fileID: 236516692}
   - {fileID: 983234980}
   - {fileID: 1723463423}

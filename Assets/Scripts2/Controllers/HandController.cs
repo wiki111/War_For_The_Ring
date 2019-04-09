@@ -15,4 +15,6 @@ public class HandController : MonoBehaviour
             cardInitializer.IntiializeCard(card);
         }
     }
+
+    
 }

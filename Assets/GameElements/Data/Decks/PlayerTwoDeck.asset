@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerTwoDeck
   m_EditorClassIdentifier: 
   cardsInDeck:
-  - {fileID: 11400000, guid: 6366edc02105c5e4c9eb62d3291f98a7, type: 2}
-  - {fileID: 11400000, guid: 6366edc02105c5e4c9eb62d3291f98a7, type: 2}
-  - {fileID: 11400000, guid: 6366edc02105c5e4c9eb62d3291f98a7, type: 2}
+  - {fileID: 11400000, guid: 8a55d6c49fab4b347a688d154f8fcb65, type: 2}
+  - {fileID: 11400000, guid: 8a55d6c49fab4b347a688d154f8fcb65, type: 2}
+  - {fileID: 11400000, guid: 8a55d6c49fab4b347a688d154f8fcb65, type: 2}

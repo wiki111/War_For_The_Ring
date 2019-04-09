@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635c8fa25ab7f364280838b13e434929, type: 3}
-  m_Name: PlaceCardOnTableEvent
+  m_Script: {fileID: 11500000, guid: d44e5af4331eb9745b9f38e1be494441, type: 3}
+  m_Name: SoldierAbility
   m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: c8294caaf6b687e489e5a707c7a91639, type: 2}

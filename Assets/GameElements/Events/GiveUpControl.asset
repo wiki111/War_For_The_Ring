@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00d6b4bdbdaf0c42b0c402ee43fa083, type: 3}
-  m_Name: BasicSoldierCard
+  m_Script: {fileID: 11500000, guid: 635c8fa25ab7f364280838b13e434929, type: 3}
+  m_Name: GiveUpControl
   m_EditorClassIdentifier: 
-  id: 0
-  name: Gondor Infantry
-  power: 10
-  cost: 2
-  description: Bellbottoms !
-  artwork: {fileID: 21300000, guid: c56a0ae7ac6460844b7ee6a6bc90dce1, type: 3}
