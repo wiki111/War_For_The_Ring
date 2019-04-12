@@ -5,22 +5,13 @@ using UnityEngine.EventSystems;
 
 public class ChangeTurnButton : MonoBehaviour, IPointerClickHandler
 {
-    public GameEvent ChangeTurnEvent;
-    public BoolVariable isAnimatingLockVariable;
+    public GameSystem gameSystem;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Clicked change turn button ...");
 
-        if (!isAnimatingLockVariable.value)
-        {
-            Debug.Log("Raising ChangeTurnEvent...");
-            ChangeTurnEvent.Raise();
-        }
-        else
-        {
-            return;
-        }
+        gameSystem.encounter.ChangeTurn();
         
     }
 }

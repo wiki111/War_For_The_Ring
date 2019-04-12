@@ -28,12 +28,14 @@ public class PlayerSystem : ScriptableObject
 
     }
 
-    public void PlaceCardOnTable()
+    public void PlaceCardOnTable(CardViewVariable placedCardViewVar, GameObject tableView)
     {
         Debug.Log("Player owns card placed is : " + CheckIfCardInPlayersHand(currectCardViewActive));
         Card cardToPlace = currectCardViewActive.Get().cardInstance.card;
         currentPlayer.Get().hand.Remove(cardToPlace);
         currentPlayer.Get().table.Add(cardToPlace);
+        new PlaceCardOnTableCommand(placedCardViewVar, tableView.GetComponent<PlayerTableView>()).AddToQueue();
+        OnCardPlacedOnTableEvent.Raise();
     }
 
     private bool CheckIfCardInPlayersHand(CardViewVariable cardViewVar)

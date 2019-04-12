@@ -32,11 +32,14 @@ public class GameSystem : ScriptableObject
         player.table.Clear();
         player.graveyard.Clear();
         player.deck.Clear();
-        
         foreach(Card card in data.deck.cardsInDeck)
         {
             player.deck.Add(card);
         }
     }
+
+   
+
+
 
 }

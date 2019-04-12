@@ -76,9 +76,7 @@ public class CardController : Controller
                     {
                         if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
                         {
-                            owner.playerSystem.PlaceCardOnTable();
-                            owner.OnCardPlacedOnTableEvent.Raise();
-                            objectClicked.GetComponent<PlayerTableView>().PlaceCard(owner.activeCardViewVar);
+                            owner.playerSystem.PlaceCardOnTable(owner.activeCardViewVar, objectClicked);
                             Complete();
                         }
 
