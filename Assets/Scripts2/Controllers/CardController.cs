@@ -10,10 +10,12 @@ public class CardController : Controller
     public GameEvent OnCardPlacedOnTableEvent;
     private ControllerState currentControllerState;
     private ControllerState cardOnHandState;
+    private int missUpdateCounter = 0;
 
     void Start()
     {
         activeControl = false;
+        missUpdateCounter = 0;
         cardOnHandState = new CardOnHandState();
         cardOnHandState.owner = this;
     }
@@ -21,19 +23,19 @@ public class CardController : Controller
     public void Activate(GameObject activeCardView)
     {
         Debug.Log("CardController takes over control...");
+        Debug.Log(activeCardView.GetComponent<CardView>().cardInstance.owner);
+        Debug.Log(playerSystem.currentPlayer.value);
         if (activeCardView.GetComponent<CardView>().cardInstance.owner != playerSystem.currentPlayer.value)
         {
-            Debug.Log(activeCardView.GetComponent<CardView>().cardInstance.owner);
-            Debug.Log(playerSystem.currentPlayer);
             GiveUpControl();
             return;
         }
 
-        activeControl = true;
         activeCardViewVar.value = activeCardView;
         var cardView = activeCardView.GetComponent<CardView>();
         cardView.ToggleActive();
         currentControllerState = cardOnHandState;
+        activeControl = true;
     }
 
     protected override void HandleLeftMouseClick()
@@ -46,6 +48,7 @@ public class CardController : Controller
     public void GiveUpControl()
     {
         Debug.Log("CardController gives up control...");
+        missUpdateCounter = 0;
         currentControllerState = null;
         activeControl = false;
         GiveUpControlEvent.Raise();
@@ -65,19 +68,25 @@ public class CardController : Controller
     {
         public void OnLeftMouseClick()
         {
-            var objectClicked = owner.GetObjectClicked();
-            if(objectClicked != null)
-            {
-                if (objectClicked.GetComponent<PlayerTableView>() != null)
+            if (owner.missUpdateCounter != 0) {
+                var objectClicked = owner.GetObjectClicked();
+                if (objectClicked != null)
                 {
-                    if(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
+                    if (objectClicked.GetComponent<PlayerTableView>() != null)
                     {
-                        owner.playerSystem.PlaceCardOnTable();
-                        owner.OnCardPlacedOnTableEvent.Raise();
-                        objectClicked.GetComponent<PlayerTableView>().PlaceCard(owner.activeCardViewVar);
+                        if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
+                        {
+                            owner.playerSystem.PlaceCardOnTable();
+                            owner.OnCardPlacedOnTableEvent.Raise();
+                            objectClicked.GetComponent<PlayerTableView>().PlaceCard(owner.activeCardViewVar);
+                            Complete();
+                        }
+
+                    }
+                    else
+                    {
                         Complete();
                     }
-
                 }
                 else
                 {
@@ -86,8 +95,14 @@ public class CardController : Controller
             }
             else
             {
-                Complete();      
+                if (owner.missUpdateCounter == 0)
+                {
+                    owner.missUpdateCounter++;
+                }
             }
+            
+
+            
         }
 
         private void Complete()
