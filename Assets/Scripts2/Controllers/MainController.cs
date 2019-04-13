@@ -18,7 +18,7 @@ public class MainController : Controller
             {
                 Debug.Log("Main controller handles mouse click...");
                 this.activeControl = false;
-                cardController.Activate(objectClicked);
+                cardController.Activate(objectClicked, objectClicked.GetComponent<CardView>().cardInstance.area);
             }
         }
     }

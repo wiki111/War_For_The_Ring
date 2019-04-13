@@ -9,33 +9,68 @@ public class CardController : Controller
     public GameEvent GiveUpControlEvent;
     public GameEvent OnCardPlacedOnTableEvent;
     private ControllerState currentControllerState;
-    private ControllerState cardOnHandState;
     private int missUpdateCounter = 0;
 
     void Start()
     {
-        activeControl = false;
-        missUpdateCounter = 0;
-        cardOnHandState = new CardOnHandState();
-        cardOnHandState.owner = this;
+        Initialize();
     }
 
-    public void Activate(GameObject activeCardView)
+    void Initialize()
     {
-        Debug.Log("CardController takes over control...");
-        Debug.Log(activeCardView.GetComponent<CardView>().cardInstance.owner);
-        Debug.Log(playerSystem.currentPlayer.value);
-        if (activeCardView.GetComponent<CardView>().cardInstance.owner != playerSystem.currentPlayer.value)
+        activeControl = false;
+        missUpdateCounter = 0;
+    }
+
+    private void Reset()
+    {
+        Debug.Log("Card controller gives up control...");
+        missUpdateCounter = 0;
+        currentControllerState = null;
+        activeControl = false;
+    }
+
+    public void Activate(GameObject activeCardView, Areas cardLocation)
+    {
+        if (!PlayerOwnsCard(activeCardView))
         {
             GiveUpControl();
             return;
         }
 
+        switch (cardLocation)
+        {
+            case Areas.Hand:
+                CardOnHandStateInit(activeCardView);
+                break;
+        }
+    }
+
+    void ChangeCurrentState(ControllerState state)
+    {
+        this.currentControllerState = state;
+        state.owner = this;
+    }
+
+    void CardOnHandStateInit(GameObject activeCardView)
+    {
         activeCardViewVar.value = activeCardView;
         var cardView = activeCardView.GetComponent<CardView>();
         cardView.ToggleActive();
-        currentControllerState = cardOnHandState;
         activeControl = true;
+        ChangeCurrentState(new CardOnHandState());
+    }
+
+    bool PlayerOwnsCard(GameObject activeCardView)
+    {
+        if (activeCardView.GetComponent<CardView>().cardInstance.owner != playerSystem.currentPlayer.value)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     protected override void HandleLeftMouseClick()
@@ -47,10 +82,7 @@ public class CardController : Controller
 
     public void GiveUpControl()
     {
-        Debug.Log("CardController gives up control...");
-        missUpdateCounter = 0;
-        currentControllerState = null;
-        activeControl = false;
+        Reset();
         GiveUpControlEvent.Raise();
     }
 
@@ -98,8 +130,6 @@ public class CardController : Controller
                     owner.missUpdateCounter++;
                 }
             }
-            
-
             
         }
 
