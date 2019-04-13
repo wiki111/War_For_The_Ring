@@ -10,13 +10,8 @@ public class CardInitializer : MonoBehaviour
     public Player owner;
     public Areas cardArea;
     
-    public void IntiializeCard(CardVariable cardVar)
+    public void SpawnCard(CardInstance cardInstance)
     {
-        //Make card instance based on card asset
-        CardInstance cardInstance = new CardInstance(cardVar.value);
-        cardInstance.owner = owner;
-        cardInstance.area = cardArea;
-
         //Instantiate prefab with spawn location view as parent
         var cardClone = Instantiate(cardPrefab, spawnLocationView.transform);
         

@@ -3,9 +3,9 @@ using UnityEditor;
 
 public class DrawCardCommand : Command
 {
-    private CardVariable cardToDraw;
+    private CardInstance cardToDraw;
 
-    public DrawCardCommand(CardVariable cardToDraw)
+    public DrawCardCommand(CardInstance cardToDraw)
     {
         this.cardToDraw = cardToDraw;
     }

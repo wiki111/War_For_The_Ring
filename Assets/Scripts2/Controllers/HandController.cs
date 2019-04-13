@@ -8,11 +8,11 @@ public class HandController : MonoBehaviour
     public PlayerVariable currentPlayer;
     public CardInitializer cardInitializer;
 
-    public void DrawCard(CardVariable card)
+    public void DrawCard(CardInstance cardInstance)
     {
         if(owner == currentPlayer.Get())
         {
-            cardInitializer.IntiializeCard(card);
+            cardInitializer.SpawnCard(cardInstance);
         }
     }
 

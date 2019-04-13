@@ -36,7 +36,10 @@ public class GameSystem : ScriptableObject
         player.deck.Clear();
         foreach(Card card in data.deck.cardsInDeck)
         {
-            player.deck.Add(card);
+            CardInstance cardInstance = new CardInstance(card);
+            cardInstance.area = Areas.Deck;
+            cardInstance.owner = player;
+            player.deck.Add(cardInstance);
         }
     }
 

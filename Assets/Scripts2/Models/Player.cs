@@ -13,9 +13,9 @@ using System;
         public IntVariable resources;
         public Side side;
         
-        public List<Card> hand = new List<Card>();
-        public List<Card> table = new List<Card>();
-        public List<Card> graveyard = new List<Card>();
-        public List<Card> deck = new List<Card>();
+        public List<CardInstance> hand = new List<CardInstance>();
+        public List<CardInstance> table = new List<CardInstance>();
+        public List<CardInstance> graveyard = new List<CardInstance>();
+        public List<CardInstance> deck = new List<CardInstance>();
     }
     

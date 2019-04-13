@@ -32,17 +32,22 @@ public class CardController : Controller
 
     public void Activate(GameObject activeCardView, Areas cardLocation)
     {
+        Debug.Log("Card controller takes over...");
         if (!PlayerOwnsCard(activeCardView))
         {
+            Debug.Log("Player doesn't own card - returning control to Main Controller ...");
             GiveUpControl();
             return;
         }
 
-        switch (cardLocation)
+        if(cardLocation == Areas.Hand)
         {
-            case Areas.Hand:
-                CardOnHandStateInit(activeCardView);
-                break;
+            CardOnHandStateInit(activeCardView);
+        }
+
+        if(currentControllerState == null)
+        {
+            GiveUpControl();
         }
     }
 
@@ -54,6 +59,7 @@ public class CardController : Controller
 
     void CardOnHandStateInit(GameObject activeCardView)
     {
+        Debug.Log("Card controller switches to CardOnHandState...");
         activeCardViewVar.value = activeCardView;
         var cardView = activeCardView.GetComponent<CardView>();
         cardView.ToggleActive();

@@ -10,7 +10,7 @@ public class PlayerSystem : ScriptableObject
     public GameEvent OnCardDrawnEvent;
     public GameEvent OnCardPlacedOnTableEvent;
     public GameEvent OnPlayerDamaged;
-    public CardVariable lastDrawnCard;
+    public CardInstanceVariable lastDrawnCard;
     public CardViewVariable currectCardViewActive;
     public CardSystem cardSystem;
     
@@ -18,12 +18,14 @@ public class PlayerSystem : ScriptableObject
     {
         if (currentPlayer.Get().deck.Count > 0)
         {
-            Debug.Log("Drawing card (deck count of player " + currentPlayer.Get().name + " is " + currentPlayer.Get().deck.Count);
-            Card drawnCard = currentPlayer.Get().deck[0];
+            CardInstance drawnCard = currentPlayer.Get().deck[0];
+            drawnCard.area = Areas.Hand;
+            drawnCard.owner = currentPlayer.Get();
             currentPlayer.Get().deck.RemoveAt(0);
             currentPlayer.Get().hand.Add(drawnCard);
-            lastDrawnCard.Value = drawnCard;
-            new DrawCardCommand(lastDrawnCard).AddToQueue();
+            lastDrawnCard.CardInstance = drawnCard;
+            Debug.Log(lastDrawnCard.CardInstance);
+            new DrawCardCommand(drawnCard).AddToQueue();
             OnCardDrawnEvent.Raise();
         }
 
@@ -31,9 +33,9 @@ public class PlayerSystem : ScriptableObject
 
     public void PlaceCardOnTable(CardViewVariable placedCardViewVar, GameObject tableView)
     {
-        Debug.Log("Player owns card placed is : " + CheckIfCardInPlayersHand(currectCardViewActive));
-        Card cardToPlace = currectCardViewActive.Get().cardInstance.card;
+        CardInstance cardToPlace = currectCardViewActive.Get().cardInstance;
         currentPlayer.Get().hand.Remove(cardToPlace);
+        cardToPlace.area = Areas.Table;
         currentPlayer.Get().table.Add(cardToPlace);
         new PlaceCardOnTableCommand(placedCardViewVar, tableView.GetComponent<PlayerTableView>()).AddToQueue();
         OnCardPlacedOnTableEvent.Raise();
@@ -41,7 +43,7 @@ public class PlayerSystem : ScriptableObject
 
     private bool CheckIfCardInPlayersHand(CardViewVariable cardViewVar)
     {
-        return currentPlayer.Get().hand.Contains(cardViewVar.Get().cardInstance.card);
+        return currentPlayer.Get().hand.Contains(cardViewVar.Get().cardInstance);
     }
 
     public void DamagePlayer(Player player, int amount)
