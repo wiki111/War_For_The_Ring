@@ -11,7 +11,7 @@ public class ChangeTurnButton : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("Clicked change turn button ...");
 
-        gameSystem.encounter.ChangeTurn();
+        gameSystem.ChangeTurn();
         
     }
 }

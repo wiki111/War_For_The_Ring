@@ -15,7 +15,9 @@ public class Command
             PlayNextCommand();
     }
 
-    public virtual void Execute() { }
+    public virtual void Execute() {
+        Complete();
+    }
 
     public static void Complete()
     {

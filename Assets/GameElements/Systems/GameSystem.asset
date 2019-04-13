@@ -16,3 +16,4 @@ MonoBehaviour:
   currentState: {fileID: 0}
   playerData: {fileID: 11400000, guid: df85ac1140bf82b42a3da8bfc0ac6c6d, type: 2}
   enemyData: {fileID: 11400000, guid: ef8f33fe5db17104ea3321267cf39af1, type: 2}
+  OnChangeTurnEvent: {fileID: 11400000, guid: 72a86fa6945c926478c3bd1a9889be52, type: 2}

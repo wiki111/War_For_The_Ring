@@ -9,6 +9,7 @@ public class GameSystem : ScriptableObject
     public StateVariable currentState;
     public PlayerData playerData;
     public PlayerData enemyData;
+    public GameEvent OnChangeTurnEvent;
 
     public void ChangeState(State state)
     {
@@ -39,7 +40,12 @@ public class GameSystem : ScriptableObject
     }
 
    
-
+    public void ChangeTurn()
+    {
+        encounter.ChangeTurn();
+        OnChangeTurnEvent.Raise();
+        new ChangeTurnCommand().AddToQueue();
+    }
 
 
 }

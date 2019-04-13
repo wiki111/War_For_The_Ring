@@ -23,6 +23,7 @@ public class PlayerSystem : ScriptableObject
             currentPlayer.Get().deck.RemoveAt(0);
             currentPlayer.Get().hand.Add(drawnCard);
             lastDrawnCard.Value = drawnCard;
+            new DrawCardCommand(lastDrawnCard).AddToQueue();
             OnCardDrawnEvent.Raise();
         }
 

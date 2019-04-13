@@ -7,6 +7,8 @@ public class AIPlayerScript : MonoBehaviour
     public GameEvent changeTurnEvent;
     public PlayerVariable currentPlayer;
     public Player aiPlayerData;
+    public GameSystem gameSystem;
+    public BoolVariable isAnimating;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +19,13 @@ public class AIPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentPlayer.value == aiPlayerData)
+        if (isAnimating.value == false)
         {
-            changeTurnEvent.Raise();
+            if (currentPlayer.value == aiPlayerData)
+            {
+                gameSystem.ChangeTurn();
+            }
         }
+        
     }
 }

@@ -11,6 +11,7 @@ public class InfoTextView : MonoBehaviour
 
     public void ShowInfo()
     {
+        Debug.Log("Show info"); 
         infoText.GetComponent<Text>().text = currentPlayer.Get().name + " turn";
         StartCoroutine(Visualize());
     }

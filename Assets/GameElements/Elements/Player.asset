@@ -16,8 +16,10 @@ MonoBehaviour:
   hp: {fileID: 11400000, guid: 986879e129209f647a03aa89b50086d8, type: 2}
   resources: {fileID: 11400000, guid: f3f7c209572825c49abb56b55985956d, type: 2}
   side: 0
-  hand:
-  - {fileID: 11400000, guid: 533c34f3c15d13447878f9ccc3107330, type: 2}
-  table: []
+  hand: []
+  table:
+  - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}
+  - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}
+  - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}
   graveyard: []
   deck: []
