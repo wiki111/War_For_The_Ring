@@ -12,7 +12,15 @@ public class DrawCardCommand : Command
 
     public override void Execute()
     {
-        GameViewSystem.Instance.handController.DrawCard(cardToDraw);
+        if(cardToDraw.owner == GameViewSystem.Instance.playersViews.owner)
+        {
+            GameViewSystem.Instance.playersViews.handController.DrawCard(cardToDraw);
+        }
+        else
+        {
+            GameViewSystem.Instance.enemyViews.handController.DrawCard(cardToDraw);
+        }
+        
         Complete();
     }
 }

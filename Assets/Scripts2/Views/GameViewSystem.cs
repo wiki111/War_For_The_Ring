@@ -9,6 +9,8 @@ public class GameViewSystem : MonoBehaviour
     public InfoTextView infoTextView;
     public HandController handController;
     public static GameViewSystem Instance;
+    public PlayerViewContainer playersViews;
+    public PlayerViewContainer enemyViews;
 
     void Awake()
     {

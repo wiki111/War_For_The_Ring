@@ -490,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236516692}
   - component: {fileID: 236516694}
+  - component: {fileID: 236516693}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -517,6 +518,21 @@ Transform:
   m_Father: {fileID: 1852180141}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &236516693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236516691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c5efa13d6fa8f4e968ba114090ba61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 11400000, guid: c2d3cbfd09ac9294e900f231ee8ffb0e, type: 2}
+  handController: {fileID: 1135349940}
+  tableView: {fileID: 1766938525}
 --- !u!114 &236516694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,7 +1046,6 @@ GameObject:
   m_Component:
   - component: {fileID: 628068275}
   - component: {fileID: 628068278}
-  - component: {fileID: 628068277}
   - component: {fileID: 628068276}
   - component: {fileID: 628068279}
   m_Layer: 0
@@ -1070,36 +1085,6 @@ MonoBehaviour:
   layoutSpaceCanvas: {fileID: 1589307713}
   gap: 0.2
   margin: 0.4
---- !u!114 &628068277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628068274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8f558c7e10ec649ae14af386324583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 6356d805bdc30374e8dbd42aff90a976, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 628068278}
-        m_MethodName: DrawCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1a54a655ad8efe147ab08ad692909c18,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: CardVariable, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &628068278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,6 +1510,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 861943245}
+  - component: {fileID: 861943247}
+  - component: {fileID: 861943246}
   m_Layer: 0
   m_Name: EnemyTableView
   m_TagString: Untagged
@@ -1547,6 +1534,34 @@ Transform:
   m_Father: {fileID: 983234980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &861943246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861943244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c37a6631107b874ea74edf575b2d002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tableView: {fileID: 861943244}
+--- !u!114 &861943247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861943244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec45c77fdd7dcb40851feb5fafee38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layoutSpaceCanvas: {fileID: 0}
+  gap: 0.2
+  margin: 0.4
 --- !u!1 &882591892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983234980}
+  - component: {fileID: 983234981}
   m_Layer: 0
   m_Name: EnemyView
   m_TagString: Untagged
@@ -1722,6 +1738,21 @@ Transform:
   m_Father: {fileID: 1852180141}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &983234981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983234979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c5efa13d6fa8f4e968ba114090ba61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 11400000, guid: cd3994671291d104bac61c7527254d29, type: 2}
+  handController: {fileID: 628068278}
+  tableView: {fileID: 861943246}
 --- !u!1 &1135349937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,6 +2449,8 @@ MonoBehaviour:
   gameSystem: {fileID: 11400000, guid: baf0c1e7ac64b294092da243547ce8dc, type: 2}
   infoTextView: {fileID: 1340260298}
   handController: {fileID: 1135349940}
+  playersViews: {fileID: 236516693}
+  enemyViews: {fileID: 983234981}
 --- !u!114 &1588257726
 MonoBehaviour:
   m_ObjectHideFlags: 0
