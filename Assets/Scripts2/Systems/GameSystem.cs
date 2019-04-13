@@ -10,6 +10,7 @@ public class GameSystem : ScriptableObject
     public PlayerData playerData;
     public PlayerData enemyData;
     public GameEvent OnChangeTurnEvent;
+    public PlayerSystem playerSystem;
 
     public void ChangeState(State state)
     {
@@ -44,6 +45,7 @@ public class GameSystem : ScriptableObject
     {
         encounter.ChangeTurn();
         OnChangeTurnEvent.Raise();
+        playerSystem.DrawCardFromDeck();
         new ChangeTurnCommand().AddToQueue();
     }
 

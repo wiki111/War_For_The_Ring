@@ -1732,7 +1732,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1135349938}
   - component: {fileID: 1135349940}
-  - component: {fileID: 1135349941}
   - component: {fileID: 1135349939}
   - component: {fileID: 1135349942}
   m_Layer: 0
@@ -1787,36 +1786,6 @@ MonoBehaviour:
   owner: {fileID: 11400000, guid: c2d3cbfd09ac9294e900f231ee8ffb0e, type: 2}
   currentPlayer: {fileID: 11400000, guid: 19427fed58aba4c49b59197dcc4102e4, type: 2}
   cardInitializer: {fileID: 1135349942}
---- !u!114 &1135349941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135349937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8f558c7e10ec649ae14af386324583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 6356d805bdc30374e8dbd42aff90a976, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1135349940}
-        m_MethodName: DrawCard
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 1a54a655ad8efe147ab08ad692909c18,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: CardVariable, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1135349942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2393,7 +2362,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588257721}
-  - component: {fileID: 1588257723}
   - component: {fileID: 1588257724}
   - component: {fileID: 1588257722}
   - component: {fileID: 1588257727}
@@ -2435,35 +2403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameViewSystem: {fileID: 1588257724}
   cardController: {fileID: 1588257727}
---- !u!114 &1588257723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588257720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8f558c7e10ec649ae14af386324583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 72a86fa6945c926478c3bd1a9889be52, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: b1010d3b06b1da441af162b209e0d54c, type: 2}
-        m_MethodName: DrawCardFromDeck
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1588257724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,6 +2417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSystem: {fileID: 11400000, guid: baf0c1e7ac64b294092da243547ce8dc, type: 2}
   infoTextView: {fileID: 1340260298}
+  handController: {fileID: 1135349940}
 --- !u!114 &1588257726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,7 +3580,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047805784}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7606328998ced424992fe827682e7dbd, type: 3}
   m_Name: 
@@ -3649,6 +3589,7 @@ MonoBehaviour:
   currentPlayer: {fileID: 11400000, guid: 19427fed58aba4c49b59197dcc4102e4, type: 2}
   aiPlayerData: {fileID: 11400000, guid: cd3994671291d104bac61c7527254d29, type: 2}
   gameSystem: {fileID: 11400000, guid: baf0c1e7ac64b294092da243547ce8dc, type: 2}
+  isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}
 --- !u!1 &2136911312
 GameObject:
   m_ObjectHideFlags: 0
