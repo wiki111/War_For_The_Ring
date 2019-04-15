@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec45c77fdd7dcb40851feb5fafee38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layoutSpaceCanvas: {fileID: 0}
+  layoutSpaceCanvas: {fileID: 1390799384}
   gap: 0.2
   margin: 0.4
 --- !u!1 &882591892
@@ -3680,6 +3680,7 @@ MonoBehaviour:
   aiPlayerData: {fileID: 11400000, guid: cd3994671291d104bac61c7527254d29, type: 2}
   gameSystem: {fileID: 11400000, guid: baf0c1e7ac64b294092da243547ce8dc, type: 2}
   isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}
+  tableView: {fileID: 861943244}
 --- !u!1 &2136911312
 GameObject:
   m_ObjectHideFlags: 0
