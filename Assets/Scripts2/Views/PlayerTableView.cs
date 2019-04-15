@@ -6,9 +6,9 @@ public class PlayerTableView : MonoBehaviour
 {
     public GameObject tableView;
     
-    public void PlaceCard(CardViewVariable cardViewVar)
+    public void PlaceCard(CardView cardView)
     {
-        cardViewVar.value.transform.SetParent(tableView.transform);
+        cardView.transform.SetParent(tableView.transform);
     }
     
 }

@@ -9,7 +9,7 @@ public class CardController : Controller
     public GameEvent GiveUpControlEvent;
     public GameEvent OnCardPlacedOnTableEvent;
     private ControllerState currentControllerState;
-    private int missUpdateCounter = 0;
+    private bool missUpdate;
 
     void Start()
     {
@@ -19,13 +19,13 @@ public class CardController : Controller
     void Initialize()
     {
         activeControl = false;
-        missUpdateCounter = 0;
+        missUpdate = true;
     }
 
     private void Reset()
     {
         Debug.Log("Card controller gives up control...");
-        missUpdateCounter = 0;
+        missUpdate = true;
         currentControllerState = null;
         activeControl = false;
     }
@@ -43,6 +43,11 @@ public class CardController : Controller
         if(cardLocation == Areas.Hand)
         {
             CardOnHandStateInit(activeCardView);
+        }
+
+        if(cardLocation == Areas.Table)
+        {
+            CardAttackConfirmStateInit(activeCardView);
         }
 
         if(currentControllerState == null)
@@ -65,6 +70,16 @@ public class CardController : Controller
         cardView.ToggleActive();
         activeControl = true;
         ChangeCurrentState(new CardOnHandState());
+    }
+
+    void CardAttackConfirmStateInit(GameObject activeCardView)
+    {
+        Debug.Log("Card controller switches to CardAttackConfirmState...");
+        activeCardViewVar.value = activeCardView;
+        var cardView = activeCardView.GetComponent<CardView>();
+        cardView.ToggleActive();
+        activeControl = true;
+        ChangeCurrentState(new CardAttackConfirmState());
     }
 
     bool PlayerOwnsCard(GameObject activeCardView)
@@ -106,39 +121,82 @@ public class CardController : Controller
     {
         public void OnLeftMouseClick()
         {
-            if (owner.missUpdateCounter != 0) {
-                var objectClicked = owner.GetObjectClicked();
-                if (objectClicked != null)
-                {
-                    if (objectClicked.GetComponent<PlayerTableView>() != null)
-                    {
-                        if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
-                        {
-                            owner.playerSystem.PlaceCardOnTable(owner.activeCardViewVar, objectClicked);
-                            Complete();
-                        }
-
-                    }
-                    else
-                    {
-                        Complete();
-                    }
-                }
-                else
-                {
-                    Complete();
-                }
+            if (!owner.missUpdate) {
+                InvokePlaceCardOnTable();
             }
             else
             {
-                if (owner.missUpdateCounter == 0)
+                if (owner.missUpdate)
                 {
-                    owner.missUpdateCounter++;
+                    owner.missUpdate = false;
                 }
+            }
+        }
+
+        private void InvokePlaceCardOnTable()
+        {
+            var objectClicked = owner.GetObjectClicked();
+            if (objectClicked != null)
+            {
+                if (objectClicked.GetComponent<PlayerTableView>() != null)
+                {
+                    if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
+                    {
+                        owner.playerSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
+                    }
+                }
+            }
+            Complete();
+        }
+
+        private void Complete()
+        {
+            owner.activeCardViewVar.value.GetComponent<CardView>().ToggleActive();
+            owner.activeCardViewVar.value = null;
+            owner.GiveUpControl();
+        }
+    }
+
+    private class CardAttackConfirmState : ControllerState, ILeftMouseClickHandler
+    {
+        public void OnLeftMouseClick()
+        {
+            if (!owner.missUpdate)
+            {
+                InvokeCardAttack();
+            }
+            else
+            {
+                owner.missUpdate = false;
             }
             
         }
 
+        private void InvokeCardAttack()
+        {
+            var objectClicked = owner.GetObjectClicked();
+            
+            if(objectClicked != null)
+            {
+                if(objectClicked.GetComponent<PlayerView>() != null)
+                {
+                    Debug.Log("Confirmed target is a player...");
+                    owner.playerSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<PlayerView>().owner);
+                }
+
+                if(objectClicked.GetComponent<CardView>() != null)
+                {
+                    Debug.Log("Confirmed target is a card...");
+                    owner.playerSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<CardView>().cardInstance);
+                }
+                
+            }
+
+            Complete();
+        }
+
+        
+        
         private void Complete()
         {
             owner.activeCardViewVar.value.GetComponent<CardView>().ToggleActive();

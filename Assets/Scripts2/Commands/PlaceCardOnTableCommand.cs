@@ -3,18 +3,18 @@ using UnityEditor;
 
 public class PlaceCardOnTableCommand : Command
 {
-    public CardViewVariable cardViewVar;
+    public CardView cardView;
     public PlayerTableView tableView;
 
-    public PlaceCardOnTableCommand(CardViewVariable cardViewVar, PlayerTableView tableView)
+    public PlaceCardOnTableCommand(CardView cardView, PlayerTableView tableView)
     {
-        this.cardViewVar = cardViewVar;
+        this.cardView = cardView;
         this.tableView = tableView;
     }
 
     public override void Execute()
     {
-        tableView.PlaceCard(cardViewVar);
+        tableView.PlaceCard(cardView);
         Complete();
     }
 

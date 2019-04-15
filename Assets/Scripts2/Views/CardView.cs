@@ -47,6 +47,12 @@ public class CardView : MonoBehaviour
             this.isActive = true;
         }
     }
+
+    public void UpdatePower()
+    {
+        Debug.Log("Updating card " + this + " power text ...");
+        healthText.text = cardInstance.power.ToString();
+    }
 }
 
 

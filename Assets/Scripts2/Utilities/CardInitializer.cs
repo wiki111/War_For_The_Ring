@@ -21,5 +21,7 @@ public class CardInitializer : MonoBehaviour
 
         cardClone.GetComponent<CardView>().enabled = true;
 
+        cardInstance.cardView = cardClone.GetComponent<CardView>();
+
     }
 }

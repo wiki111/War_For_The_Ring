@@ -9,6 +9,7 @@ public class AIPlayerScript : MonoBehaviour
     public Player aiPlayerData;
     public GameSystem gameSystem;
     public BoolVariable isAnimating;
+    public GameObject tableView;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,12 @@ public class AIPlayerScript : MonoBehaviour
     {
         if (isAnimating.value == false)
         {
+            if(aiPlayerData.hand.Count > 0)
+            {
+                var cardToPlay = aiPlayerData.hand[0];
+                gameSystem.playerSystem.PlaceCardOnTable(cardToPlay.cardView, tableView);
+            }
+
             if (currentPlayer.value == aiPlayerData)
             {
                 gameSystem.ChangeTurn();

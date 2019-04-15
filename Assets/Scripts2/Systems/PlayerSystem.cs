@@ -28,17 +28,31 @@ public class PlayerSystem : ScriptableObject
             new DrawCardCommand(drawnCard).AddToQueue();
             OnCardDrawnEvent.Raise();
         }
-
     }
 
-    public void PlaceCardOnTable(CardViewVariable placedCardViewVar, GameObject tableView)
+    public void UseCard(CardInstance card, Target target)
     {
-        CardInstance cardToPlace = currectCardViewActive.Get().cardInstance;
+        
+        if(TargetingSystem.IsValid(card.card.validTargets, target))
+        {   
+            target.Damage(card.power);
+        }
+    }
+
+    public void PlaceCardOnTable(CardView placedCardView, GameObject tableView)
+    {
+        CardInstance cardToPlace = placedCardView.cardInstance;
         currentPlayer.Get().hand.Remove(cardToPlace);
         cardToPlace.area = Areas.Table;
         currentPlayer.Get().table.Add(cardToPlace);
-        new PlaceCardOnTableCommand(placedCardViewVar, tableView.GetComponent<PlayerTableView>()).AddToQueue();
+        new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
         OnCardPlacedOnTableEvent.Raise();
+    }
+
+    public void DamagePlayer(Player target, CardInstance attacker)
+    {
+        target.hp.value -= attacker.power;
+        new DamagePlayerCommand().AddToQueue();
     }
 
     private bool CheckIfCardInPlayersHand(CardViewVariable cardViewVar)
@@ -59,7 +73,6 @@ public class PlayerSystem : ScriptableObject
     {
         return true;
     }
-
     
 }
 
