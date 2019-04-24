@@ -6,6 +6,7 @@ public class CardController : Controller
 {
     public CardViewVariable activeCardViewVar;
     public PlayerSystem playerSystem;
+    public CardSystem cardSystem;
     public GameEvent GiveUpControlEvent;
     public GameEvent OnCardPlacedOnTableEvent;
     private ControllerState currentControllerState;
@@ -181,13 +182,13 @@ public class CardController : Controller
                 if(objectClicked.GetComponent<PlayerView>() != null)
                 {
                     Debug.Log("Confirmed target is a player...");
-                    owner.playerSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<PlayerView>().owner);
+                    owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<PlayerView>().owner);
                 }
 
                 if(objectClicked.GetComponent<CardView>() != null)
                 {
                     Debug.Log("Confirmed target is a card...");
-                    owner.playerSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<CardView>().cardInstance);
+                    owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<CardView>().cardInstance);
                 }
                 
             }

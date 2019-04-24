@@ -10,6 +10,7 @@ public class CardInstance : Target
     public int  instanceId;
     public int power;
     public int cost;
+    public int numberOfUsesThisTurn = 0;
     public Areas area;
     
     public CardInstance(Card card)

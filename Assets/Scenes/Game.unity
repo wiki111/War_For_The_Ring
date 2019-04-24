@@ -2551,6 +2551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeCardViewVar: {fileID: 11400000, guid: 71b1f3854eced1a408631937861d1660, type: 2}
   playerSystem: {fileID: 11400000, guid: b1010d3b06b1da441af162b209e0d54c, type: 2}
+  cardSystem: {fileID: 11400000, guid: bd259642db5faa24091ac856b201f54e, type: 2}
   GiveUpControlEvent: {fileID: 11400000, guid: fa17e84a0da54e8448010f92f214676a, type: 2}
   OnCardPlacedOnTableEvent: {fileID: 11400000, guid: 5aba54dea9c3ba246a3451cca3fa7dfb,
     type: 2}

@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+[CreateAssetMenu(menuName = "Game/Systems/Card System")]
 public class CardSystem : ScriptableObject
 {
     public PlayerSystem playerSystem;
-    public GameEvent OnCardDrawnEvent;
-    public GameEvent OnCardPlayedEvent;
-    public CardVariable lastDrawnCard;
-    public CardViewVariable currentCardViewActive;
-
-    public void AddCardToGame(CardInstance cardInstance)
+    
+    public void UseCard(CardInstance card, Target target)
     {
-        foreach(Effect effect in cardInstance.card.ability.effects)
+        if(card.numberOfUsesThisTurn < card.card.useLimit)
         {
-            effect.trigger.RegisterListener(effect);
+            if (TargetingSystem.IsValid(card.card.validTargets, target))
+            {
+                target.Damage(card.power);
+                card.numberOfUsesThisTurn++;
+            }
         }
     }
 }

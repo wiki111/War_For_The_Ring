@@ -29,16 +29,7 @@ public class PlayerSystem : ScriptableObject
             OnCardDrawnEvent.Raise();
         }
     }
-
-    public void UseCard(CardInstance card, Target target)
-    {
-        
-        if(TargetingSystem.IsValid(card.card.validTargets, target))
-        {   
-            target.Damage(card.power);
-        }
-    }
-
+     
     public void PlaceCardOnTable(CardView placedCardView, GameObject tableView)
     {
         CardInstance cardToPlace = placedCardView.cardInstance;

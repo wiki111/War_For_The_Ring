@@ -8,6 +8,7 @@ public class Card : ScriptableObject {
     public int power;
     public int cost;
     public string description;
+    public int useLimit = 1;
     public TargetOptions validTargets = TargetOptions.CardAndEnemy;
     public CardType type;
     public Sprite artwork;
