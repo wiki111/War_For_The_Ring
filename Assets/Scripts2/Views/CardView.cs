@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -52,6 +54,26 @@ public class CardView : MonoBehaviour
     {
         Debug.Log("Updating card " + this + " power text ...");
         healthText.text = cardInstance.power.ToString();
+    }
+
+    public void KillCardAnimation()
+    {
+        StartCoroutine(ShrinkDown(this.transform));
+    }
+
+    public void DestroyCard()
+    {
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator ShrinkDown(Transform target)
+    {
+        while (target.localScale.x > 0 || target.localScale.y > 0)
+        {
+            target.localScale = Vector3.Lerp(target.localScale, new Vector3(-0.5f, -0.5f, -0.5f), Time.deltaTime);
+            yield return null;
+        }
+        DestroyCard();
     }
 }
 

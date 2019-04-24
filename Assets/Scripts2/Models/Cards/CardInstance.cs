@@ -26,6 +26,30 @@ public class CardInstance : Target
         this.power -= amount;
         Debug.Log("Card damaged...");
         new DamageCardCommand(this.cardView).AddToQueue();
+        if(this.power <= 0)
+        {
+            RemoveCard();
+            new KillCardCommand(this).AddToQueue();
+        }
+    }
+
+    public void RemoveCard()
+    {
+        switch (this.area)
+        {
+            case Areas.Deck:
+                owner.deck.Remove(this);
+                break;
+            case Areas.Hand:
+                owner.hand.Remove(this);
+                break;
+            case Areas.Table:
+                owner.table.Remove(this);
+                Debug.Log("Card Removed");
+                break;
+            default:
+                break;
+        }
     }
 
     public override bool IsValidTarget(TargetOptions criteria)
