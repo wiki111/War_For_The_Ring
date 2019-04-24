@@ -6,7 +6,6 @@ using System;
 [CreateAssetMenu(fileName = "NewPlayer", menuName = "Game/Player")]
 public class Player : Target
 {
-
     public string name;
     public IntVariable hp;
     public IntVariable resources;

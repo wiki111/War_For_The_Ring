@@ -23,6 +23,10 @@ public class PlayerSystem : ScriptableObject
             drawnCard.owner = currentPlayer.Get();
             currentPlayer.Get().deck.RemoveAt(0);
             currentPlayer.Get().hand.Add(drawnCard);
+            if(drawnCard.card.ability != null)
+            {
+                drawnCard.card.ability.owner = drawnCard;
+            }
             lastDrawnCard.CardInstance = drawnCard;
             Debug.Log(lastDrawnCard.CardInstance);
             new DrawCardCommand(drawnCard).AddToQueue();

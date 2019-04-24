@@ -18,6 +18,7 @@ public class CardInitializer : MonoBehaviour
         //Assign card instance to card view
         cardClone.GetComponent<CardView>().cardInstance = cardInstance;
         cardClone.GetComponent<CardView>().currentLogic = cardViewLogic;
+        
 
         cardClone.GetComponent<CardView>().enabled = true;
 

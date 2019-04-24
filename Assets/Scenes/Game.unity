@@ -337,6 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 174314688}
+  - component: {fileID: 174314689}
   m_Layer: 0
   m_Name: GraveyardView
   m_TagString: Untagged
@@ -359,6 +360,19 @@ Transform:
   m_Father: {fileID: 236516692}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &174314689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174314687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708b00724517c764f8be598a6e372047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 11400000, guid: c2d3cbfd09ac9294e900f231ee8ffb0e, type: 2}
 --- !u!1 &189039810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +1914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253454605}
+  - component: {fileID: 1253454606}
   m_Layer: 0
   m_Name: GraveyardView
   m_TagString: Untagged
@@ -1922,6 +1937,19 @@ Transform:
   m_Father: {fileID: 983234980}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253454606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253454604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708b00724517c764f8be598a6e372047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 11400000, guid: cd3994671291d104bac61c7527254d29, type: 2}
 --- !u!1 &1327825266
 GameObject:
   m_ObjectHideFlags: 0

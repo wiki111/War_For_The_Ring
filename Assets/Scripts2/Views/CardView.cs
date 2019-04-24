@@ -9,7 +9,7 @@ public class CardView : MonoBehaviour
 {
 
     public CardInstance cardInstance;
-    private bool isActive = false;
+    public bool isActive = false;
     public CardViewLogic currentLogic;
 
     public Image cardBack;
@@ -58,7 +58,12 @@ public class CardView : MonoBehaviour
 
     public void KillCardAnimation()
     {
-        StartCoroutine(ShrinkDown(this.transform));
+        StartCoroutine(ShrinkDown(this.transform, 2));
+    }
+
+    public void ShowUsingAbilityAnimation()
+    {
+        StartCoroutine(ShowUsingAbility(this.transform, 2));
     }
 
     public void DestroyCard()
@@ -66,14 +71,70 @@ public class CardView : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    IEnumerator ShrinkDown(Transform target)
+    IEnumerator ShrinkDown(Transform target, float time)
     {
-        while (target.localScale.x > 0 || target.localScale.y > 0)
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
         {
-            target.localScale = Vector3.Lerp(target.localScale, new Vector3(-0.5f, -0.5f, -0.5f), Time.deltaTime);
+            target.localScale = Vector3.Lerp(target.localScale, new Vector3(0f, 0f, 0f), (elapsedTime / time));
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
-        DestroyCard();
+
+        yield return StartCoroutine(AddToGraveyardAnimation(target, 2));
+        //DestroyCard();
+    }
+
+    IEnumerator AddToGraveyardAnimation(Transform target, float time)
+    {
+        GraveyardView[] graveyards = GameViewSystem.Instance.GetComponentsInChildren<GraveyardView>();
+
+        foreach (GraveyardView graveyard in graveyards)
+        {
+            if (graveyard.owner == cardInstance.owner)
+            {
+                float elapsedTime = 0;
+
+                if (this.isActive)
+                {
+                    ToggleActive();
+                }
+                
+                target.SetParent(graveyard.transform);
+
+                while (elapsedTime < time)
+                {
+                    target.transform.localScale = Vector3.Lerp(target.localScale, new Vector3(1f, 1f, 1f), (elapsedTime / time));
+                    target.localPosition = Vector3.Lerp(target.localPosition, new Vector3(0f, 0f, 0f), (elapsedTime / time));
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+
+            }
+        }
+
+        yield return null;
+    }
+
+    IEnumerator ShowUsingAbility(Transform target, float time)
+    {
+
+        this.transform.SetParent(null);
+
+        float elapsedTime = 0;
+        
+        while(elapsedTime < time)
+        {
+            target.localPosition = Vector3.Lerp(target.localPosition, new Vector3(0f, 0f, target.localPosition.z), (elapsedTime / time));
+            target.localScale = Vector3.Lerp(target.localScale, new Vector3(1.5f, 1.5f, 1.5f), (elapsedTime / time));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        yield return StartCoroutine(AddToGraveyardAnimation(target, 2));
+        //DestroyCard();
     }
 }
 

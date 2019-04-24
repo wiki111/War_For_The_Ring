@@ -22,4 +22,4 @@ MonoBehaviour:
   lastDrawnCard: {fileID: 11400000, guid: 0464d9d6e971171419124e59cb8a25ba, type: 2}
   currectCardViewActive: {fileID: 11400000, guid: 71b1f3854eced1a408631937861d1660,
     type: 2}
-  cardSystem: {fileID: 0}
+  cardSystem: {fileID: 11400000, guid: bd259642db5faa24091ac856b201f54e, type: 2}

@@ -11,6 +11,7 @@ public class GameViewSystem : MonoBehaviour
     public static GameViewSystem Instance;
     public PlayerViewContainer playersViews;
     public PlayerViewContainer enemyViews;
+    public BoolVariable isAnimating;
 
     void Awake()
     {

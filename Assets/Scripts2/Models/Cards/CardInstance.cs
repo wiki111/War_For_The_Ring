@@ -28,8 +28,8 @@ public class CardInstance : Target
         new DamageCardCommand(this.cardView).AddToQueue();
         if(this.power <= 0)
         {
-            RemoveCard();
             new KillCardCommand(this).AddToQueue();
+            RemoveCard();
         }
     }
 
@@ -50,6 +50,9 @@ public class CardInstance : Target
             default:
                 break;
         }
+
+        owner.graveyard.Add(this);
+        this.area = Areas.Graveyard;
     }
 
     public override bool IsValidTarget(TargetOptions criteria)
