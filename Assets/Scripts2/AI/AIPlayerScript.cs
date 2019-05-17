@@ -25,7 +25,7 @@ public class AIPlayerScript : MonoBehaviour
             if(aiPlayerData.hand.Count > 0)
             {
                 var cardToPlay = aiPlayerData.hand[0];
-                gameSystem.playerSystem.PlaceCardOnTable(cardToPlay.cardView, tableView);
+                gameSystem.cardSystem.PlaceCardOnTable(cardToPlay.cardView, tableView);
             }
 
             if (currentPlayer.value == aiPlayerData)

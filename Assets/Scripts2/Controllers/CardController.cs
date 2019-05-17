@@ -161,7 +161,7 @@ public class CardController : Controller
                 {
                     if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
                     {
-                        owner.playerSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
+                        owner.cardSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
                     }
                 }
             }
