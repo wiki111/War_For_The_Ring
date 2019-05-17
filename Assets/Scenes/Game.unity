@@ -2520,6 +2520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameViewSystem: {fileID: 1588257724}
   cardController: {fileID: 1588257727}
+  isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}
 --- !u!114 &1588257723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,6 +2567,7 @@ MonoBehaviour:
   handController: {fileID: 1135349940}
   playersViews: {fileID: 236516693}
   enemyViews: {fileID: 983234981}
+  isAnimating: {fileID: 0}
 --- !u!114 &1588257726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,6 +2989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSystem: {fileID: 11400000, guid: baf0c1e7ac64b294092da243547ce8dc, type: 2}
+  isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}
 --- !u!1 &1766938522
 GameObject:
   m_ObjectHideFlags: 0

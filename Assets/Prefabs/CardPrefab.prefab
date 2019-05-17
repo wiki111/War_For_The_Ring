@@ -264,7 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d877fce4fa0884eabdcd9bfc193b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInstance: {fileID: 0}
+  isActive: 0
   currentLogic: {fileID: 0}
+  isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}
   cardBack: {fileID: 8119410259900144556}
   cardFront: {fileID: 114524197664529262}
   im: {fileID: 4130154767105843678}

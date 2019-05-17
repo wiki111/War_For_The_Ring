@@ -11,6 +11,7 @@ public class CardView : MonoBehaviour
     public CardInstance cardInstance;
     public bool isActive = false;
     public CardViewLogic currentLogic;
+    public BoolVariable isAnimating;
 
     public Image cardBack;
     public Image cardFront;
@@ -73,7 +74,7 @@ public class CardView : MonoBehaviour
 
     IEnumerator ShrinkDown(Transform target, float time)
     {
-
+        isAnimating.value = true;
         float elapsedTime = 0;
 
         while (elapsedTime < time)
@@ -82,13 +83,15 @@ public class CardView : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
+        isAnimating.value = false;
         yield return StartCoroutine(AddToGraveyardAnimation(target, 2));
         //DestroyCard();
     }
 
     IEnumerator AddToGraveyardAnimation(Transform target, float time)
     {
+        isAnimating.value = true;
+
         GraveyardView[] graveyards = GameViewSystem.Instance.GetComponentsInChildren<GraveyardView>();
 
         foreach (GraveyardView graveyard in graveyards)
@@ -101,7 +104,7 @@ public class CardView : MonoBehaviour
                 {
                     ToggleActive();
                 }
-                
+
                 target.SetParent(graveyard.transform);
 
                 while (elapsedTime < time)
@@ -115,12 +118,13 @@ public class CardView : MonoBehaviour
             }
         }
 
+        isAnimating.value = false;
         yield return null;
     }
 
     IEnumerator ShowUsingAbility(Transform target, float time)
     {
-
+        isAnimating.value = true;
         this.transform.SetParent(null);
 
         float elapsedTime = 0;
@@ -132,7 +136,8 @@ public class CardView : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
+
+        isAnimating.value = false;
         yield return StartCoroutine(AddToGraveyardAnimation(target, 2));
         //DestroyCard();
     }

@@ -6,6 +6,7 @@ public class MainController : Controller
 {
     public GameViewSystem gameViewSystem;
     public CardController cardController;
+    public BoolVariable isAnimating;
 
     protected override void HandleLeftMouseClick()
     {
@@ -14,7 +15,7 @@ public class MainController : Controller
         if (objectClicked != null)
         {
             Debug.Log(objectClicked.name);
-            if (objectClicked.tag == "CardView")
+            if (objectClicked.tag == "CardView" && !isAnimating.value)
             {
                 Debug.Log("Main controller handles mouse click...");
                 this.activeControl = false;
