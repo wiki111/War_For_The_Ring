@@ -13,7 +13,7 @@ public class DamageCardCommand : Command
 
     public override void Execute()
     {
-        Debug.Log("Card text should update...");
+        Debug.Log("Card text should update ; " + damagedCard.cardInstance.card.name);
         damagedCard.UpdatePower();
         Complete();
     }

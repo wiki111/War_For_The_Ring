@@ -11,6 +11,7 @@ public class CardInstance : Target
     public int power;
     public int cost;
     public int numberOfUsesThisTurn = 0;
+    public AbilityInstance abilityInstance;
     public Areas area;
     
     public CardInstance(Card card)
@@ -19,6 +20,10 @@ public class CardInstance : Target
         this.card = card;
         this.power = card.power;
         this.cost = card.cost;
+        if(card.ability is PassiveAbility)
+        {
+            this.abilityInstance = ((PassiveAbility)card.ability).GetInstance(this);
+        }
     }
 
     public override void Damage(int amount)
@@ -28,8 +33,8 @@ public class CardInstance : Target
         new DamageCardCommand(this.cardView).AddToQueue();
         if(this.power <= 0)
         {
-            new KillCardCommand(this).AddToQueue();
             RemoveCard();
+            new KillCardCommand(this).AddToQueue();
         }
     }
 
@@ -49,6 +54,11 @@ public class CardInstance : Target
                 break;
             default:
                 break;
+        }
+
+        if(this.abilityInstance != null)
+        {
+            abilityInstance.UnregisterAbility();
         }
 
         owner.graveyard.Add(this);

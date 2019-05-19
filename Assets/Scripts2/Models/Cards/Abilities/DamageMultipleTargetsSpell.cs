@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class DamageMultipleTargetsSpell : SpellAbility
 {
     public List<int> damageAmounts = new List<int>();
+    public ActionSystem actionSystem;
+    public GameEvent BeforeAttackActionEvent;
     
     public override void ActivateAbility(List<Target> targets)
     {
@@ -20,7 +22,8 @@ public class DamageMultipleTargetsSpell : SpellAbility
                 {
                     if(counter < damageAmounts.Count) //if there is a damage value for the next target
                     {
-                        target.Damage(damageAmounts[counter]); //apply damage
+                        actionSystem.ExecuteAction(new AttackAction(target, this.owner, damageAmounts[counter]));
+                        //target.Damage(damageAmounts[counter]); //apply damage
                         counter++; //increment counter of damage values to apply to targets
                     }
                     

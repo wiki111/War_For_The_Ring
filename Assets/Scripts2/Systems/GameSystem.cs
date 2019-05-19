@@ -12,6 +12,7 @@ public class GameSystem : ScriptableObject
     public GameEvent OnChangeTurnEvent;
     public PlayerSystem playerSystem;
     public CardSystem cardSystem;
+    public ActionSystem actionSystem;
 
     public void ChangeState(State state)
     {

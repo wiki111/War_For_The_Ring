@@ -18,3 +18,5 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: ef8f33fe5db17104ea3321267cf39af1, type: 2}
   OnChangeTurnEvent: {fileID: 11400000, guid: 72a86fa6945c926478c3bd1a9889be52, type: 2}
   playerSystem: {fileID: 11400000, guid: b1010d3b06b1da441af162b209e0d54c, type: 2}
+  cardSystem: {fileID: 11400000, guid: bd259642db5faa24091ac856b201f54e, type: 2}
+  actionSystem: {fileID: 0}

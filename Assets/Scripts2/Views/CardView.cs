@@ -53,8 +53,8 @@ public class CardView : MonoBehaviour
 
     public void UpdatePower()
     {
-        Debug.Log("Updating card " + this + " power text ...");
-        healthText.text = cardInstance.power.ToString();
+        Debug.Log("Updating card " + this.cardInstance.card.name + " power text ...");
+        attackText.text = cardInstance.power.ToString();
     }
 
     public void KillCardAnimation()

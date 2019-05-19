@@ -6,9 +6,11 @@ using System.Collections.Generic;
 public class CardSystem : ScriptableObject
 {
     public PlayerSystem playerSystem;
+    public ActionSystem actionSystem;
     public CardInstanceVariable lastDrawnCard;
     public GameEvent OnCardPlacedOnTableEvent;
     public GameEvent OnCardDrawnEvent;
+    public GameEvent BeforeAttackActionEvent;
 
     public void UseCard(CardInstance card, Target target)
     {
@@ -16,7 +18,7 @@ public class CardSystem : ScriptableObject
         {
             if (TargetingSystem.IsValid(card.card.validTargets, target))
             {
-                target.Damage(card.power);
+                actionSystem.ExecuteAction(new AttackAction(target, card, -1));
                 card.numberOfUsesThisTurn++;
             }
         }
@@ -74,6 +76,10 @@ public class CardSystem : ScriptableObject
         playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
         cardToPlace.area = Areas.Table;
         playerSystem.currentPlayer.Get().table.Add(cardToPlace);
+        if(cardToPlace.abilityInstance != null)
+        {
+            cardToPlace.abilityInstance.RegisterAbility();
+        }
         new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
         OnCardPlacedOnTableEvent.Raise();
     }
