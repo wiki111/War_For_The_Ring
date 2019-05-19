@@ -25,10 +25,9 @@ public class GameEvent : ScriptableObject
 
     public void RaiseActionEvent(Action action)
     {
-        Debug.Log("Handling raised event...");
+        Debug.Log("Handling raised action event...");
         for(int i = abilities.Count - 1; i >= 0; i--)
         {
-            Debug.Log("index is : " + i);
             abilities[i].ActivateAbility(action);
         }
     }

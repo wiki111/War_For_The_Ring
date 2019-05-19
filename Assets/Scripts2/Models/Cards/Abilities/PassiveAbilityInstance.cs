@@ -22,6 +22,7 @@ public class PassiveAbilityInstance : AbilityInstance
 
     public void ActivateAbility(Action action)
     {
+        Debug.Log("Activating passive ability...");
         ((PassiveAbility)ability).ActivateAbility(action, this);
     }
 }

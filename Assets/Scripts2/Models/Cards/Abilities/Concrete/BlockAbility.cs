@@ -4,6 +4,10 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "Game/Cards/Abilities/Block Ability")]
 public class BlockAbility : PassiveAbility
 {
+    public bool canCounter;
+    public int counterPower = 1;
+    public ActionSystem actionSystem;
+
     public override AbilityInstance GetInstance(CardInstance owner)
     {
         PassiveAbilityInstance blockAbilityInstance = new PassiveAbilityInstance(owner, this, triggerEvent);
@@ -15,9 +19,18 @@ public class BlockAbility : PassiveAbility
         Debug.Log("Blooooock!");
         if (action is AttackAction)
         {
-            if (((AttackAction)action).attacker.owner != instance.owner.owner)
+            CardInstance attacker = ((AttackAction)action).attacker;
+            if ( attacker.owner != instance.owner.owner)
             {
+                Debug.Log("Block activated ------------");
                 ChangeTarget((AttackAction)action, instance.owner);
+                if (canCounter)
+                {
+                    if(actionSystem != null)
+                    {
+                        actionSystem.ExecuteAction(new AttackAction(attacker, instance.owner, counterPower));
+                    }
+                }
             }
         }
         else
@@ -30,5 +43,4 @@ public class BlockAbility : PassiveAbility
     {
         action.target = newTarget;
     }
-
 }

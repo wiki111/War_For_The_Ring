@@ -29,7 +29,7 @@ public class CardInstance : Target
     public override void Damage(int amount)
     {
         this.power -= amount;
-        Debug.Log("Card damaged...");
+        Debug.Log("Card " + this.card.name + " damaged : " + amount + " damage dealt");
         new DamageCardCommand(this.cardView).AddToQueue();
         if(this.power <= 0)
         {

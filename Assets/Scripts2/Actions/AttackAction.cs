@@ -14,19 +14,9 @@ public class AttackAction : Action
         this.damageAmount = damageAmount;
     }
 
-    public override void AfterExecute()
-    {
-        
-    }
-
-    public override void BeforeExecute()
-    {
-        
-    }
-
     public override void Execute()
     {
-        BeforeExecute();
+        Debug.Log("Executing attack action, target : " + this.target + " , attacker : " + this.attacker.owner.name);
         if(damageAmount == -1)
         {
             target.Damage(attacker.power);
@@ -35,6 +25,5 @@ public class AttackAction : Action
         {
             target.Damage(damageAmount);
         }
-        AfterExecute();
     }
 }

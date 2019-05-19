@@ -11,5 +11,4 @@ public class AbilityInstance
         this.owner = owner;
         this.ability = ability;
     }
-
 }

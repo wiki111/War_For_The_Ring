@@ -22,7 +22,7 @@ public class AIPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAnimating.value == false)
+        if (isAnimating.value == false && currentPlayer.value == aiPlayerData)
         {
             if(aiPlayerData.hand.Count > 0)
             {

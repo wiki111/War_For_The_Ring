@@ -72,8 +72,9 @@ public class CardSystem : ScriptableObject
         playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
         cardToPlace.area = Areas.Table;
         playerSystem.currentPlayer.Get().table.Add(cardToPlace);
-        if(cardToPlace.abilityInstance != null && cardToPlace.abilityInstance is PassiveAbilityInstance)
+        if(cardToPlace.abilityInstance != null && cardToPlace.card.ability is PassiveAbility)
         {
+            Debug.Log("Registering passive ability " + cardToPlace.card.ability.name + " ...");
             ((PassiveAbilityInstance)cardToPlace.abilityInstance).RegisterAbility();
         }
         new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();

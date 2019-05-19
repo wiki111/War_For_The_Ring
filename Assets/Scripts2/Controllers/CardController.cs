@@ -296,13 +296,18 @@ public class CardController : Controller
                 }
 
             }
+            else
+            {
+                Complete();
+            }
 
-            if(chosenTargetsList.Count == ability.numberOfTargets || (owner.playerSystem.enemy.table.Count < ability.numberOfTargets && chosenTargetsList.Count == owner.playerSystem.enemy.table.Count))
+            if(chosenTargetsList.Count == ability.numberOfTargets || (owner.playerSystem.enemy.table.Count < ability.numberOfTargets && chosenTargetsList.Count == owner.playerSystem.enemy.table.Count && chosenTargetsList.Count != 0))
             {
                 foreach(CardView cardView in chosenCardsViews)
                 {
                     cardView.ToggleActive();
                 }
+                Debug.Log("Activating spell ability....");
                 ability.ActivateAbility(chosenTargetsList, card.abilityInstance);
                 Complete();
             }
