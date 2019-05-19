@@ -6,6 +6,5 @@ public abstract class SpellAbility : Ability
 {
     public int numberOfTargets;
     public TargetOptions validTargets;
-
-    public abstract void ActivateAbility(List<Target> targets);
+    public abstract void ActivateAbility(List<Target> targets, AbilityInstance instance);
 }

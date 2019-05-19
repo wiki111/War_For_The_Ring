@@ -59,10 +59,6 @@ public class CardSystem : ScriptableObject
             drawnCard.owner = playerSystem.currentPlayer.Get();
             playerSystem.currentPlayer.Get().deck.RemoveAt(0);
             playerSystem.currentPlayer.Get().hand.Add(drawnCard);
-            if (drawnCard.card.ability != null)
-            {
-                drawnCard.card.ability.owner = drawnCard;
-            }
             lastDrawnCard.CardInstance = drawnCard;
             Debug.Log(lastDrawnCard.CardInstance);
             new DrawCardCommand(drawnCard).AddToQueue();
@@ -76,9 +72,9 @@ public class CardSystem : ScriptableObject
         playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
         cardToPlace.area = Areas.Table;
         playerSystem.currentPlayer.Get().table.Add(cardToPlace);
-        if(cardToPlace.abilityInstance != null)
+        if(cardToPlace.abilityInstance != null && cardToPlace.abilityInstance is PassiveAbilityInstance)
         {
-            cardToPlace.abilityInstance.RegisterAbility();
+            ((PassiveAbilityInstance)cardToPlace.abilityInstance).RegisterAbility();
         }
         new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
         OnCardPlacedOnTableEvent.Raise();

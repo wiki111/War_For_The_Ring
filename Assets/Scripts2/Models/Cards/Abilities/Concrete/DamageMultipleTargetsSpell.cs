@@ -9,20 +9,20 @@ public class DamageMultipleTargetsSpell : SpellAbility
     public ActionSystem actionSystem;
     public GameEvent BeforeAttackActionEvent;
     
-    public override void ActivateAbility(List<Target> targets)
+    public override void ActivateAbility(List<Target> targets, AbilityInstance instance)
     {
         int counter = 0;
         if(damageAmounts != null && targets != null) //check for nulls
         {
             if(targets.Count > 0) //check that there are any targets
             {
-                new SpellCardActivateCommand(owner.cardView).AddToQueue();
+                new SpellCardActivateCommand(instance.owner.cardView).AddToQueue();
 
                 foreach (Target target in targets) //perform actions on all targets
                 {
                     if(counter < damageAmounts.Count) //if there is a damage value for the next target
                     {
-                        actionSystem.ExecuteAction(new AttackAction(target, this.owner, damageAmounts[counter]));
+                        actionSystem.ExecuteAction(new AttackAction(target, instance.owner, damageAmounts[counter]));
                         //target.Damage(damageAmounts[counter]); //apply damage
                         counter++; //increment counter of damage values to apply to targets
                     }
@@ -31,6 +31,12 @@ public class DamageMultipleTargetsSpell : SpellAbility
             }
         }
 
-        this.owner.RemoveCard();
+        instance.owner.RemoveCard();
+    }
+
+    public override AbilityInstance GetInstance(CardInstance owner)
+    {
+        AbilityInstance instance = new AbilityInstance(owner, this);
+        return instance;
     }
 }

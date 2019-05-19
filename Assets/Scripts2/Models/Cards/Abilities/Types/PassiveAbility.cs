@@ -4,5 +4,5 @@ using UnityEditor;
 public abstract class PassiveAbility : Ability
 {
     public GameEvent triggerEvent;
-    public abstract AbilityInstance GetInstance(CardInstance owner);
+    public abstract void ActivateAbility(Action action, PassiveAbilityInstance instance);
 }

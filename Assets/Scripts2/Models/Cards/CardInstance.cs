@@ -20,10 +20,10 @@ public class CardInstance : Target
         this.card = card;
         this.power = card.power;
         this.cost = card.cost;
-        if(card.ability is PassiveAbility)
+        if(card.ability != null)
         {
-            this.abilityInstance = ((PassiveAbility)card.ability).GetInstance(this);
-        }
+            this.abilityInstance = card.ability.GetInstance(this);
+        }   
     }
 
     public override void Damage(int amount)
@@ -56,9 +56,9 @@ public class CardInstance : Target
                 break;
         }
 
-        if(this.abilityInstance != null)
+        if (this.abilityInstance != null && this.abilityInstance is PassiveAbilityInstance)
         {
-            abilityInstance.UnregisterAbility();
+            ((PassiveAbilityInstance)this.abilityInstance).UnregisterAbility();
         }
 
         owner.graveyard.Add(this);

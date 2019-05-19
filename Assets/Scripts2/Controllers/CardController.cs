@@ -303,7 +303,7 @@ public class CardController : Controller
                 {
                     cardView.ToggleActive();
                 }
-                ability.ActivateAbility(chosenTargetsList);
+                ability.ActivateAbility(chosenTargetsList, card.abilityInstance);
                 Complete();
             }
            

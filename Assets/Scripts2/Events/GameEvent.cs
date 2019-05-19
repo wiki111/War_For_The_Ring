@@ -8,7 +8,7 @@ public class GameEvent : ScriptableObject
     private List<GameEventListener> listeners = new List<GameEventListener>();
     private List<ScriptableEventListener> scriptableListeners = new List<ScriptableEventListener>();
     private List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
-    private List<AbilityInstance> abilities = new List<AbilityInstance>();
+    private List<PassiveAbilityInstance> abilities = new List<PassiveAbilityInstance>();
 
     public void Raise()
     {
@@ -48,7 +48,7 @@ public class GameEvent : ScriptableObject
         passiveAbilities.Add(passiveAbility);
     }
 
-    public void RegisterListener(AbilityInstance ability)
+    public void RegisterListener(PassiveAbilityInstance ability)
     {
         this.abilities.Add(ability);
     }
@@ -68,7 +68,7 @@ public class GameEvent : ScriptableObject
         passiveAbilities.Remove(passiveAbility);
     }
 
-    public void UnregisterListener(AbilityInstance ability)
+    public void UnregisterListener(PassiveAbilityInstance ability)
     {
         this.abilities.Remove(ability);
     }

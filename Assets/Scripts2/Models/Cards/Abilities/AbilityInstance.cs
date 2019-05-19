@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public abstract class AbilityInstance 
+public class AbilityInstance 
 {
     public CardInstance owner;
-    public GameEvent ev;
-    public abstract void RegisterAbility();
-    public abstract void UnregisterAbility();
-    public abstract void ActivateAbility(Action action);
+    public Ability ability;
 
-    public AbilityInstance(CardInstance owner, GameEvent ev)
+    public AbilityInstance(CardInstance owner, Ability ability)
     {
         this.owner = owner;
-        this.ev = ev;
+        this.ability = ability;
     }
 
 }
