@@ -3740,7 +3740,9 @@ MonoBehaviour:
   changeTurnEvent: {fileID: 11400000, guid: 72a86fa6945c926478c3bd1a9889be52, type: 2}
   currentPlayer: {fileID: 11400000, guid: 19427fed58aba4c49b59197dcc4102e4, type: 2}
   aiPlayerData: {fileID: 11400000, guid: cd3994671291d104bac61c7527254d29, type: 2}
+  enemyData: {fileID: 11400000, guid: c2d3cbfd09ac9294e900f231ee8ffb0e, type: 2}
   gameSystem: {fileID: 11400000, guid: baf0c1e7ac64b294092da243547ce8dc, type: 2}
+  cardSystem: {fileID: 11400000, guid: bd259642db5faa24091ac856b201f54e, type: 2}
   isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}
   tableView: {fileID: 861943244}
 --- !u!1 &2136911312
