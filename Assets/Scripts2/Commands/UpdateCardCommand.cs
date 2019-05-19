@@ -2,11 +2,11 @@
 using UnityEditor;
 using System.Collections.Generic;
 
-public class DamageCardCommand : Command
+public class UpdateCardCommand : Command
 {
     private CardView damagedCard;
 
-    public DamageCardCommand(CardView damagedCard)
+    public UpdateCardCommand(CardView damagedCard)
     {
         this.damagedCard = damagedCard;
     }

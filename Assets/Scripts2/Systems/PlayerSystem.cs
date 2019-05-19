@@ -18,7 +18,7 @@ public class PlayerSystem : ScriptableObject
     public void DamagePlayer(Player target, CardInstance attacker)
     {
         target.hp.value -= attacker.power;
-        new DamagePlayerCommand().AddToQueue();
+        new UpdatePlayerHPCommand().AddToQueue();
     }
 
     

@@ -30,11 +30,21 @@ public class CardInstance : Target
     {
         this.power -= amount;
         Debug.Log("Card " + this.card.name + " damaged : " + amount + " damage dealt");
-        new DamageCardCommand(this.cardView).AddToQueue();
+        new UpdateCardCommand(this.cardView).AddToQueue();
         if(this.power <= 0)
         {
             RemoveCard();
             new KillCardCommand(this).AddToQueue();
+        }
+    }
+
+    public override void Heal(int amount)
+    {
+        this.power += amount;
+        if(this.power > card.power)
+        {
+            this.power = card.power;
+            new UpdateCardCommand(this.cardView).AddToQueue();
         }
     }
 
@@ -80,4 +90,6 @@ public class CardInstance : Target
                 break;
         }
     }
+
+    
 }

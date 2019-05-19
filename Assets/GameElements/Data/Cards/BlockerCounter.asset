@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8409beb248620484bb7463c4a4bfecac, type: 3}
-  m_Name: CounterAbility
+  m_Script: {fileID: 11500000, guid: db3d7db7376b1374ea8ed9a45da21cb3, type: 3}
+  m_Name: BlockerCounter
   m_EditorClassIdentifier: 
+  id: 5
   name: Minas Tirith
-  triggerEvent: {fileID: 11400000, guid: 4843589936e4d2742982fde12f33d790, type: 2}
-  canCounter: 1
-  actionSystem: {fileID: 11400000, guid: fb2fab09cbf2d2e4889020efd52f6b2a, type: 2}
+  power: 20
+  cost: 0
+  description: 
+  useLimit: 0
+  validTargets: 3
+  type: 0
+  artwork: {fileID: 0}
+  ability: {fileID: 11400000, guid: 148d91dcf53afee47bb64eccdd5a54c3, type: 2}

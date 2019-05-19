@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class DamagePlayerCommand : Command
+public class UpdatePlayerHPCommand : Command
 {
     public override void Execute()
     {

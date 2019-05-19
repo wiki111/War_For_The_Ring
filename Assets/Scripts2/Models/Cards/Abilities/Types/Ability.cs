@@ -3,8 +3,12 @@ using UnityEditor;
 using System.Collections.Generic;
 
 
-public abstract class Ability : ScriptableObject
+public class Ability : ScriptableObject
 {
     public string name;
-    public abstract AbilityInstance GetInstance(CardInstance owner);
+    public virtual AbilityInstance GetInstance(CardInstance owner)
+    {
+        AbilityInstance instance = new AbilityInstance(owner, this);
+        return instance;
+    }
 }

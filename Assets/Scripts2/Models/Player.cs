@@ -19,7 +19,13 @@ public class Player : Target
     public override void Damage(int amount)
     {
         this.hp.value -= amount;
-        new DamagePlayerCommand().AddToQueue();
+        new UpdatePlayerHPCommand().AddToQueue();
+    }
+
+    public override void Heal(int amount)
+    {
+        this.hp.value += amount;
+        new UpdatePlayerHPCommand().AddToQueue();
     }
 
     public override bool IsValidTarget(TargetOptions criteria)
