@@ -199,14 +199,21 @@ public class CardController : Controller
             {
                 if(objectClicked.GetComponent<PlayerView>() != null)
                 {
-                    Debug.Log("Confirmed target is a player...");
-                    owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<PlayerView>().owner);
+                    if (objectClicked.GetComponent<PlayerView>().owner != owner.playerSystem.currentPlayer.value)
+                    {
+                        Debug.Log("Confirmed target is a player...");
+                        owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<PlayerView>().owner);
+                    }
                 }
 
                 if(objectClicked.GetComponent<CardView>() != null)
                 {
-                    Debug.Log("Confirmed target is a card...");
-                    owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<CardView>().cardInstance);
+                    if(objectClicked.GetComponent<CardView>().cardInstance.owner != owner.playerSystem.currentPlayer.value)
+                    {
+                        Debug.Log("Confirmed target is a card...");
+                        owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<CardView>().cardInstance);
+                    }
+                    
                 }
                 
             }
