@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Enemy
   hp: 20
-  resources: 100
+  resources: 0
   side: 1
   deck: {fileID: 11400000, guid: d08bb4fd7192cc84bb191b17cd41435d, type: 2}

@@ -12,7 +12,14 @@ public class GameSystem : ScriptableObject
     public GameEvent OnChangeTurnEvent;
     public PlayerSystem playerSystem;
     public CardSystem cardSystem;
+    public ResourceSystem resourceSystem;
     public ActionSystem actionSystem;
+    public static GameSystem Instance;
+   
+    private void OnEnable()
+    {
+        Instance = this;
+    }
 
     public void ChangeState(State state)
     {
@@ -51,6 +58,7 @@ public class GameSystem : ScriptableObject
         encounter.ChangeTurn();
         OnChangeTurnEvent.Raise();
         cardSystem.DrawCardFromDeck();
+        resourceSystem.AddResources(playerSystem.currentPlayer.value, 1);
         new ChangeTurnCommand().AddToQueue();
     }
 

@@ -40,12 +40,14 @@ public class CardInstance : Target
 
     public override void Heal(int amount)
     {
+        Debug.Log("Card " + card.name + " healed by " + amount);
         this.power += amount;
         if(this.power > card.power)
         {
             this.power = card.power;
-            new UpdateCardCommand(this.cardView).AddToQueue();
         }
+
+        new UpdateCardCommand(this.cardView).AddToQueue();
     }
 
     public void RemoveCard()

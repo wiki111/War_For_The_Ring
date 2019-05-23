@@ -7,6 +7,7 @@ public class CardSystem : ScriptableObject
 {
     public PlayerSystem playerSystem;
     public ActionSystem actionSystem;
+    public ResourceSystem resourceSystem;
     public CardInstanceVariable lastDrawnCard;
     public GameEvent OnCardPlacedOnTableEvent;
     public GameEvent OnCardDrawnEvent;
@@ -69,16 +70,21 @@ public class CardSystem : ScriptableObject
     public void PlaceCardOnTable(CardView placedCardView, GameObject tableView)
     {
         CardInstance cardToPlace = placedCardView.cardInstance;
-        playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
-        cardToPlace.area = Areas.Table;
-        playerSystem.currentPlayer.Get().table.Add(cardToPlace);
-        if(cardToPlace.abilityInstance != null && cardToPlace.card.ability is PassiveAbility)
+        if(cardToPlace.cost <= playerSystem.currentPlayer.value.resources.value)
         {
-            Debug.Log("Registering passive ability " + cardToPlace.card.ability.name + " ...");
-            ((PassiveAbilityInstance)cardToPlace.abilityInstance).RegisterAbility();
+            resourceSystem.WithdrawResources(playerSystem.currentPlayer.value, cardToPlace.cost);
+            playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
+            cardToPlace.area = Areas.Table;
+            playerSystem.currentPlayer.Get().table.Add(cardToPlace);
+            if (cardToPlace.abilityInstance != null && cardToPlace.card.ability is PassiveAbility)
+            {
+                Debug.Log("Registering passive ability " + cardToPlace.card.ability.name + " ...");
+                ((PassiveAbilityInstance)cardToPlace.abilityInstance).RegisterAbility();
+            }
+            new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
+            OnCardPlacedOnTableEvent.Raise();
         }
-        new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
-        OnCardPlacedOnTableEvent.Raise();
+        
     }
 
     private bool CheckIfCardInPlayersHand(CardViewVariable cardViewVar)

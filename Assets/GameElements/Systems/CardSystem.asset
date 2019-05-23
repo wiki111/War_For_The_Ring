@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSystem: {fileID: 11400000, guid: b1010d3b06b1da441af162b209e0d54c, type: 2}
   actionSystem: {fileID: 11400000, guid: fb2fab09cbf2d2e4889020efd52f6b2a, type: 2}
+  resourceSystem: {fileID: 11400000, guid: 8731f69b3d063314ca6fa4a05e717e96, type: 2}
   lastDrawnCard: {fileID: 11400000, guid: 0464d9d6e971171419124e59cb8a25ba, type: 2}
   OnCardPlacedOnTableEvent: {fileID: 11400000, guid: 5aba54dea9c3ba246a3451cca3fa7dfb,
     type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 3
   name: Wrath Of Isildur
   power: 0
-  cost: 0
+  cost: 4
   description: Damage three chosen cards dealing 1, 2 and 3 damage respectively
   useLimit: 1
   validTargets: 2

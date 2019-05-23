@@ -7,6 +7,7 @@ public class CardController : Controller
     public CardViewVariable activeCardViewVar;
     public PlayerSystem playerSystem;
     public CardSystem cardSystem;
+    public ResourceSystem resourceSystem;
     public GameEvent GiveUpControlEvent;
     public GameEvent OnCardPlacedOnTableEvent;
     private ControllerState currentControllerState;
@@ -161,7 +162,7 @@ public class CardController : Controller
                 {
                     if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
                     {
-                        owner.cardSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
+                       owner.cardSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
                     }
                 }
             }
@@ -310,13 +311,14 @@ public class CardController : Controller
 
             if(chosenTargetsList.Count == ability.numberOfTargets || (owner.playerSystem.enemy.table.Count < ability.numberOfTargets && chosenTargetsList.Count == owner.playerSystem.enemy.table.Count && chosenTargetsList.Count != 0))
             {
-                foreach(CardView cardView in chosenCardsViews)
-                {
-                    cardView.ToggleActive();
-                }
-                Debug.Log("Activating spell ability....");
-                ability.ActivateAbility(chosenTargetsList, card.abilityInstance);
-                Complete();
+                   
+                    foreach (CardView cardView in chosenCardsViews)
+                    {
+                        cardView.ToggleActive();
+                    }
+                    Debug.Log("Activating spell ability....");
+                    ability.ActivateAbility(chosenTargetsList, card.abilityInstance);
+                    Complete();
             }
            
         }

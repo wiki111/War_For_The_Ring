@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player
   hp: 10
-  resources: 100
+  resources: 0
   side: 0
   deck: {fileID: 11400000, guid: f62a15882a6bf1c4cb43d3c86ad8f9e4, type: 2}

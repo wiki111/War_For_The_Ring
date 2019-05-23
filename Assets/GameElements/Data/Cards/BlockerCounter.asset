@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 5
   name: Minas Tirith
   power: 20
-  cost: 0
+  cost: 5
   description: 
   useLimit: 0
   validTargets: 3
