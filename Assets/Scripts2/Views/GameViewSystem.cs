@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 
 public class GameViewSystem : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class GameViewSystem : MonoBehaviour
     public PlayerViewContainer playersViews;
     public PlayerViewContainer enemyViews;
     public BoolVariable isAnimating;
+    public Canvas EndgameScreen;
 
     void Awake()
     {
@@ -22,5 +23,20 @@ public class GameViewSystem : MonoBehaviour
     void Start()
     {
         gameSystem.InitializeGame();
+    }
+
+    public void EndGame(Player winner)
+    {
+        Text infoText = EndgameScreen.GetComponentInChildren<Text>();
+        if (winner == gameSystem.encounter.player)
+        {
+            infoText.text = "You Win";
+        }
+        else
+        {
+            infoText.text = "You Lose";
+        }
+        EndgameScreen.gameObject.SetActive(true);
+        gameSystem.gameEnded.value = true;
     }
 }

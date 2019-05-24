@@ -17,7 +17,7 @@ MonoBehaviour:
   power: 20
   cost: 5
   description: 
-  useLimit: 0
+  useLimit: 1
   validTargets: 3
   type: 0
   artwork: {fileID: 0}

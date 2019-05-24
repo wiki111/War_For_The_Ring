@@ -7,12 +7,13 @@ public class MainController : Controller
     public GameViewSystem gameViewSystem;
     public CardController cardController;
     public BoolVariable isAnimating;
+    public BoolVariable gameEnded;
 
     protected override void HandleLeftMouseClick()
     {
         var objectClicked = GetObjectClicked();
 
-        if (objectClicked != null)
+        if (objectClicked != null && !gameEnded.value)
         {
             Debug.Log(objectClicked.name);
             if (objectClicked.tag == "CardView" && !isAnimating.value)
@@ -27,6 +28,7 @@ public class MainController : Controller
                 gameViewSystem.gameSystem.ChangeTurn();
             }
         }
+        
     }
 
     // Start is called before the first frame update

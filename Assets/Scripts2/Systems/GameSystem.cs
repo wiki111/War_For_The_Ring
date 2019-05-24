@@ -14,6 +14,8 @@ public class GameSystem : ScriptableObject
     public CardSystem cardSystem;
     public ResourceSystem resourceSystem;
     public ActionSystem actionSystem;
+    public BoolVariable gameEnded;
+    public BoolVariable isAnimating;
     public static GameSystem Instance;
    
     private void OnEnable()
@@ -30,6 +32,8 @@ public class GameSystem : ScriptableObject
     {
         SetupPlayer(encounter.player, playerData);
         SetupPlayer(encounter.enemy, enemyData);
+        gameEnded.value = false;
+        isAnimating.value = false;
     }
 
     private void SetupPlayer(Player player, PlayerData data)
@@ -52,7 +56,6 @@ public class GameSystem : ScriptableObject
         }
     }
 
-   
     public void ChangeTurn()
     {
         encounter.ChangeTurn();

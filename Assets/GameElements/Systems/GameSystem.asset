@@ -21,3 +21,5 @@ MonoBehaviour:
   cardSystem: {fileID: 11400000, guid: bd259642db5faa24091ac856b201f54e, type: 2}
   resourceSystem: {fileID: 11400000, guid: 8731f69b3d063314ca6fa4a05e717e96, type: 2}
   actionSystem: {fileID: 11400000, guid: fb2fab09cbf2d2e4889020efd52f6b2a, type: 2}
+  gameEnded: {fileID: 11400000, guid: b00e21eeb2b59b04892792b245ce9430, type: 2}
+  isAnimating: {fileID: 11400000, guid: f07fa4a1038b72543abe37401d7a55d1, type: 2}

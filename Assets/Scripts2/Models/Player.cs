@@ -20,6 +20,10 @@ public class Player : Target
     {
         this.hp.value -= amount;
         new UpdatePlayerHPCommand().AddToQueue();
+        if(this.hp.value <= 0)
+        {
+            new EndGameCommand(this).AddToQueue();
+        }
     }
 
     public override void Heal(int amount)
