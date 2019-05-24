@@ -21,6 +21,11 @@ public class MainController : Controller
                 this.activeControl = false;
                 cardController.Activate(objectClicked, objectClicked.GetComponent<CardView>().cardInstance.area);
             }
+
+            if(objectClicked.GetComponent<ChangeTurnButton>() != null && !isAnimating.value)
+            {
+                gameViewSystem.gameSystem.ChangeTurn();
+            }
         }
     }
 

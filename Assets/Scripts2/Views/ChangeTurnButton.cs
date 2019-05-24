@@ -13,7 +13,7 @@ public class ChangeTurnButton : MonoBehaviour, IPointerClickHandler
         if (!isAnimating.value)
         {
             Debug.Log("Clicked change turn button ...");
-            gameSystem.ChangeTurn();
+            //gameSystem.ChangeTurn();
         }
     }
 }
