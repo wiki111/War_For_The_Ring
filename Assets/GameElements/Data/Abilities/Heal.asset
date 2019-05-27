@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Gandzialf
   numberOfTargets: 1
-  validTargets: 2
+  validTargets: 4
   healAmount: 5

@@ -24,27 +24,10 @@ public class AIPlayerScript : MonoBehaviour
     {
         if (isAnimating.value == false && currentPlayer.value == aiPlayerData)
         {
-
             PlayCards();
             UseCardsOnTable();
             UseSpells();
-            //if(aiPlayerData.table.Count > 0)
-            //{
-            //    CardInstance cardToPlay = aiPlayerData.table[0];
-            //    if(enemyData.table.Count > 0)
-            //    {
-            //        cardSystem.UseCard(cardToPlay, enemyData.table[0]);
-            //    }
-            //    else
-            //    {
-            //        cardSystem.UseCard(cardToPlay, enemyData);
-            //    }
-            //}
-
-            if (currentPlayer.value == aiPlayerData)
-            {
-                gameSystem.ChangeTurn();
-            }
+            gameSystem.ChangeTurn();
         }
         
     }
@@ -72,17 +55,15 @@ public class AIPlayerScript : MonoBehaviour
                 SpellAbility ability = ((SpellAbility)card.card.ability);
                 int numberOfTargets = ability.numberOfTargets;
                 List<Target> targets = new List<Target>();
-                for (int i = 0; i < numberOfTargets; i++)
-                {
-                    if(ability.validTargets == TargetOptions.EnemyCard && enemyData.table.Count - 1 >= i)
-                    {
-                        targets.Add(enemyData.table[i]);
-                    }
 
-                    if(ability.validTargets == TargetOptions.AllyCard && aiPlayerData.table.Count - 1 >= i)
-                    {
-                        targets.Add(aiPlayerData.table[i]);
-                    }
+                if (ability.validTargets == TargetOptions.EnemyCard)
+                {
+                    targets = findCardsToDamage(numberOfTargets);
+                }
+
+                if (ability.validTargets == TargetOptions.AllyCard)
+                {
+                    targets = findCardsToHeal(numberOfTargets);
                 }
 
                 if(targets.Count > 0)
@@ -91,6 +72,84 @@ public class AIPlayerScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private List<Target> findCardsToDamage(int amount)
+    {
+        List<Target> cardsToDamage = new List<Target>();
+        CardInstance candidate = null;
+
+        for (int i = 0; i < amount; i++)
+        {
+            candidate = null;
+
+            if(enemyData.table.Count > 0)
+            {
+                foreach (CardInstance card in enemyData.table)
+                {
+                    if (candidate == null)
+                    {
+                        if (!cardsToDamage.Contains(card))
+                        {
+                            candidate = card;
+                        }
+                    }
+                    else
+                    {
+                        if (candidate.power < card.power && !cardsToDamage.Contains(candidate))
+                        {
+                            candidate = card;
+                        }
+                    }
+                }
+
+                if(candidate != null)
+                {
+                    cardsToDamage.Add(candidate);
+                }
+            }
+        }
+
+        return cardsToDamage;
+    }
+
+    private List<Target> findCardsToHeal(int amount)
+    {
+        List<Target> cardsToHeal = new List<Target>();
+        CardInstance candidate = null;
+
+        for (int i = 0; i < amount; i++)
+        {
+            candidate = null;
+
+            if (aiPlayerData.table.Count > 0)
+            {
+                foreach (CardInstance card in aiPlayerData.table)
+                {
+                    if (candidate == null)
+                    {
+                        if(card.power < card.card.power)
+                        {
+                            candidate = card;
+                        }
+                    }
+                    else
+                    {
+                        if (candidate.power > card.power && card.power < card.card.power && !cardsToHeal.Contains(candidate))
+                        {
+                            candidate = card;
+                        }
+                    }
+                }
+                if (candidate != null)
+                {
+                    cardsToHeal.Add(candidate);
+                }
+
+            }
+        }
+
+        return cardsToHeal;
     }
 
     private void UseCardsOnTable()
@@ -165,7 +224,7 @@ public class AIPlayerScript : MonoBehaviour
         //first, prevent losing
         if(enemyTablePower > aiPlayerData.hp.value && aiTablePower < enemyData.hp.value)
         {
-            return findMostDangerousCard();  
+            return findMostDangerousCard(enemyData.table);  
         }
 
         if(enemyData.hp.value <= aiTablePower)
@@ -177,10 +236,10 @@ public class AIPlayerScript : MonoBehaviour
         return enemyData;
     }
 
-    private Target findMostDangerousCard()
+    private Target findMostDangerousCard(List<CardInstance> candidateCards)
     {
         CardInstance cardToAttack = null;
-        foreach (CardInstance card in enemyData.table)
+        foreach (CardInstance card in candidateCards)
         {
             if(cardToAttack == null)
             {

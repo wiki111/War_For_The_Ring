@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerOneDeck
   m_EditorClassIdentifier: 
   cardsInDeck:
-  - {fileID: 11400000, guid: 5afe770481733724cb7deb329997acba, type: 2}
-  - {fileID: 11400000, guid: 52ed182ba6c08804c9d11125660453bc, type: 2}
-  - {fileID: 11400000, guid: c5d1233e3c4a24246a3848506f2cf4af, type: 2}
   - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}
+  - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}
+  - {fileID: 11400000, guid: f2ae7e403748da549a9d2e20f706124c, type: 2}
+  - {fileID: 11400000, guid: 52ed182ba6c08804c9d11125660453bc, type: 2}
   - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}
   - {fileID: 11400000, guid: 9b2a181cbd217084582312651fbc82f8, type: 2}

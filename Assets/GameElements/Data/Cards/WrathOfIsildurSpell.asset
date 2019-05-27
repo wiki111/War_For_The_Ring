@@ -18,7 +18,7 @@ MonoBehaviour:
   cost: 4
   description: Damage three chosen cards dealing 1, 2 and 3 damage respectively
   useLimit: 1
-  validTargets: 2
+  validTargets: 5
   type: 1
   artwork: {fileID: 0}
   ability: {fileID: 11400000, guid: d5673122b8f029b429775db09cc0e249, type: 2}

@@ -48,7 +48,7 @@ public class CardController : Controller
             {
                 ConfirmChooseSpellTargetStateInit(activeCardView);
             }
-            else if(activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Soldier)
+            else if(activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Soldier || activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Blocker)
             {
                 ConfirmPlaceOnTableStateInit(activeCardView);
             }

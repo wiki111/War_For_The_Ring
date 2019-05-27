@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Damage Multiple Targets Spell
   m_EditorClassIdentifier: 
   name: Wrath of Isildur
-  owner: {fileID: 0}
   numberOfTargets: 3
-  validTargets: 2
+  validTargets: 5
   damageAmounts: 010000000200000003000000
-  actionSystem: {fileID: 11400000, guid: fb2fab09cbf2d2e4889020efd52f6b2a, type: 2}
   BeforeAttackActionEvent: {fileID: 11400000, guid: 4843589936e4d2742982fde12f33d790,
     type: 2}
