@@ -4,5 +4,6 @@ using UnityEditor;
 public enum CardType 
 {
     Soldier,
-    Spell
+    Spell,
+    Blocker
 }

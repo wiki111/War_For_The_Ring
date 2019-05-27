@@ -265,7 +265,7 @@ public class CardController : Controller
                 if (objectClicked.GetComponent<PlayerView>() != null)
                 {
                     Target target = (Target)objectClicked.GetComponent<PlayerView>().owner;
-                    if(TargetingSystem.IsValid(ability.validTargets, target))
+                    if(TargetingSystem.IsValid(ability.validTargets, target, true))
                     {
                         chosenTargetsList.Add(target);
                     }
@@ -273,7 +273,7 @@ public class CardController : Controller
                 else if (objectClicked.GetComponent<CardView>() != null)
                 {
                     Target target = (Target)objectClicked.GetComponent<CardView>().cardInstance;
-                    if (TargetingSystem.IsValid(ability.validTargets, target))
+                    if (TargetingSystem.IsValid(ability.validTargets, target, true))
                     {
                         if (!chosenTargetsList.Contains(target))
                         {

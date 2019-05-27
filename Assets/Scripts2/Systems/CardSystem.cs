@@ -17,7 +17,8 @@ public class CardSystem : ScriptableObject
     {
         if(card.numberOfUsesThisTurn < card.card.useLimit)
         {
-            if (TargetingSystem.IsValid(card.card.validTargets, target))
+
+            if (TargetingSystem.IsValid(card.card.validTargets, target, true))
             {
                 actionSystem.ExecuteAction(new AttackAction(target, card, -1));
                 card.numberOfUsesThisTurn++;
@@ -72,17 +73,21 @@ public class CardSystem : ScriptableObject
         CardInstance cardToPlace = placedCardView.cardInstance;
         if(cardToPlace.cost <= playerSystem.currentPlayer.value.resources.value)
         {
-            resourceSystem.WithdrawResources(playerSystem.currentPlayer.value, cardToPlace.cost);
-            playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
-            cardToPlace.area = Areas.Table;
-            playerSystem.currentPlayer.Get().table.Add(cardToPlace);
-            if (cardToPlace.abilityInstance != null && cardToPlace.card.ability is PassiveAbility)
+            if(cardToPlace.card.type != CardType.Spell)
             {
-                Debug.Log("Registering passive ability " + cardToPlace.card.ability.name + " ...");
-                ((PassiveAbilityInstance)cardToPlace.abilityInstance).RegisterAbility();
+                resourceSystem.WithdrawResources(playerSystem.currentPlayer.value, cardToPlace.cost);
+                playerSystem.currentPlayer.Get().hand.Remove(cardToPlace);
+                cardToPlace.area = Areas.Table;
+                playerSystem.currentPlayer.Get().table.Add(cardToPlace);
+                if (cardToPlace.abilityInstance != null && cardToPlace.card.ability is PassiveAbility)
+                {
+                    Debug.Log("Registering passive ability " + cardToPlace.card.ability.name + " ...");
+                    ((PassiveAbilityInstance)cardToPlace.abilityInstance).RegisterAbility();
+                }
+                new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
+                OnCardPlacedOnTableEvent.Raise();
             }
-            new PlaceCardOnTableCommand(placedCardView, tableView.GetComponent<PlayerTableView>()).AddToQueue();
-            OnCardPlacedOnTableEvent.Raise();
+            
         }
         
     }

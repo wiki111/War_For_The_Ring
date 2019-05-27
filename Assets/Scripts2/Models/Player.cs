@@ -32,7 +32,7 @@ public class Player : Target
         new UpdatePlayerHPCommand().AddToQueue();
     }
 
-    public override bool IsValidTarget(TargetOptions criteria)
+    public override bool IsValidTarget(TargetOptions criteria, bool playerPerspective = true)
     {
         switch (criteria)
         {

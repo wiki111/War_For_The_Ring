@@ -6,5 +6,7 @@ public enum TargetOptions
     Player,
     Enemy,
     CardOnTable,
-    CardAndEnemy
+    CardAndEnemy,
+    AllyCard,
+    EnemyCard
 }

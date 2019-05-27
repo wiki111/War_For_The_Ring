@@ -77,7 +77,7 @@ public class CardInstance : Target
         this.area = Areas.Graveyard;
     }
 
-    public override bool IsValidTarget(TargetOptions criteria)
+    public override bool IsValidTarget(TargetOptions criteria, bool PlayerPerspective = true)
     {
         switch (criteria)
         {
@@ -87,6 +87,52 @@ public class CardInstance : Target
             case TargetOptions.CardOnTable:
                 return (area == Areas.Table);
                 break;
+            case TargetOptions.AllyCard:
+                if (PlayerPerspective)
+                {
+                    if(this.owner.side == Side.player)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if(this.owner.side == Side.enemy)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            case TargetOptions.EnemyCard:
+                if (PlayerPerspective)
+                {
+                    if (this.owner.side == Side.player)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (this.owner.side == Side.enemy)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
             default:
                 return false;
                 break;

@@ -19,6 +19,6 @@ MonoBehaviour:
   description: Blocks Damage
   useLimit: 0
   validTargets: 3
-  type: 0
+  type: 2
   artwork: {fileID: 0}
   ability: {fileID: 11400000, guid: 9c3039f2b18b04b4781e67755c3c4f8b, type: 2}

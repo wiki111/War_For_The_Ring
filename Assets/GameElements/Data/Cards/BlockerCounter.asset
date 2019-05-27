@@ -19,6 +19,6 @@ MonoBehaviour:
   description: 
   useLimit: 1
   validTargets: 3
-  type: 0
+  type: 2
   artwork: {fileID: 0}
   ability: {fileID: 11400000, guid: 148d91dcf53afee47bb64eccdd5a54c3, type: 2}
