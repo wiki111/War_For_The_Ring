@@ -13,6 +13,7 @@ public class GameViewSystem : MonoBehaviour
     public PlayerViewContainer enemyViews;
     public BoolVariable isAnimating;
     public Canvas EndgameScreen;
+    public Canvas EndgameScreenLose;
 
     void Awake()
     {
@@ -28,15 +29,17 @@ public class GameViewSystem : MonoBehaviour
     public void EndGame(Player winner)
     {
         Text infoText = EndgameScreen.GetComponentInChildren<Text>();
+        Text infoTextLose = EndgameScreenLose.GetComponentInChildren<Text>();
         if (winner == gameSystem.encounter.player)
         {
-            infoText.text = "You Win";
+            infoText.text = "";
+            EndgameScreen.gameObject.SetActive(true);
         }
         else
         {
-            infoText.text = "You Lose";
+            infoTextLose.text = "";
+            EndgameScreenLose.gameObject.SetActive(true);
         }
-        EndgameScreen.gameObject.SetActive(true);
         gameSystem.gameEnded.value = true;
     }
 }

@@ -37,8 +37,7 @@ public class HandCardViewLogic : CardViewLogic
                 }
             }
         }
-        
+
     }
 
-    
 }

@@ -54,6 +54,8 @@ public class GameSystem : ScriptableObject
             cardInstance.owner = player;
             player.deck.Add(cardInstance);
         }
+
+        player.deck.Shuffle();
     }
 
     public void ChangeTurn()

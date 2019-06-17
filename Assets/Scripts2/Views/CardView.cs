@@ -41,15 +41,31 @@ public class CardView : MonoBehaviour
     {
         if (isActive)
         {
+           
             this.transform.localScale = Vector3.one;
             this.isActive = false;
         }
         else
         {
-            this.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            //this.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+           this.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
             this.isActive = true;
         }
     }
+
+   
+
+   void OnMouseEnter()
+    {
+        this.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
+    }
+
+    void OnMouseExit()
+    {
+        this.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+
 
     public void UpdatePower()
     {
@@ -72,6 +88,8 @@ public class CardView : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
+
     IEnumerator ShrinkDown(Transform target, float time)
     {
         isAnimating.value = true;
@@ -87,6 +105,8 @@ public class CardView : MonoBehaviour
         yield return StartCoroutine(AddToGraveyardAnimation(target, 2));
         //DestroyCard();
     }
+
+
 
     IEnumerator AddToGraveyardAnimation(Transform target, float time)
     {

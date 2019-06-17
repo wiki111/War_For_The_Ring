@@ -20,5 +20,5 @@ MonoBehaviour:
   useLimit: 1
   validTargets: 5
   type: 1
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 174a136d5af7c4446a4bf795fcf6560a, type: 3}
   ability: {fileID: 11400000, guid: d5673122b8f029b429775db09cc0e249, type: 2}

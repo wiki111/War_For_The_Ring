@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   name: Helms Deep
-  power: 15
-  cost: 0
-  description: Blocks Damage
+  power: 10
+  cost: 5
+  description: Blocker
   useLimit: 0
   validTargets: 3
   type: 2
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: f7d0a927abb7f1f4c83f588e09ac3d34, type: 3}
   ability: {fileID: 11400000, guid: 9c3039f2b18b04b4781e67755c3c4f8b, type: 2}

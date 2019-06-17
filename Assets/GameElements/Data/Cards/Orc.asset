@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Orc
   m_EditorClassIdentifier: 
   id: 2
-  name: Ork
+  name: Orc
   power: 2
   cost: 2
-  description: Tralalala
+  description: Common soldier
+  useLimit: 1
+  validTargets: 3
   type: 0
   artwork: {fileID: 21300000, guid: 188c81b670f21f044b5b49a067c8f453, type: 3}
   ability: {fileID: 0}

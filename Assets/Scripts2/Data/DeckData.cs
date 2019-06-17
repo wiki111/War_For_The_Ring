@@ -6,4 +6,11 @@ using System.Collections.Generic;
 public class DeckData : ScriptableObject
 {
     public List<Card> cardsInDeck = new List<Card>();
+   
+
+    void Awake()
+    {
+        cardsInDeck.Shuffle();
+    }
+
 }

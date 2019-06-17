@@ -54,6 +54,9 @@ public class CardSystem : ScriptableObject
 
     public void DrawCardFromDeck()
     {
+        List<Card> cardsInDeck = new List<Card>();
+        cardsInDeck.Shuffle();
+
         if (playerSystem.currentPlayer.Get().deck.Count > 0)
         {
             CardInstance drawnCard = playerSystem.currentPlayer.Get().deck[0];

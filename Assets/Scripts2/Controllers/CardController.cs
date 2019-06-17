@@ -42,25 +42,25 @@ public class CardController : Controller
             return;
         }
 
-        if(cardLocation == Areas.Hand)
+        if (cardLocation == Areas.Hand)
         {
-            if(activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Spell)
+            if (activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Spell)
             {
                 ConfirmChooseSpellTargetStateInit(activeCardView);
             }
-            else if(activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Soldier || activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Blocker)
+            else if (activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Soldier || activeCardView.GetComponent<CardView>().cardInstance.card.type == CardType.Blocker)
             {
                 ConfirmPlaceOnTableStateInit(activeCardView);
             }
-            
+
         }
 
-        if(cardLocation == Areas.Table)
+        if (cardLocation == Areas.Table)
         {
             ConfirmCardAttackStateInit(activeCardView);
         }
 
-        if(currentControllerState == null)
+        if (currentControllerState == null)
         {
             GiveUpControl();
         }
@@ -114,6 +114,7 @@ public class CardController : Controller
         }
     }
 
+
     protected override void HandleLeftMouseClick()
     {
         var handler = currentControllerState as ILeftMouseClickHandler;
@@ -132,16 +133,19 @@ public class CardController : Controller
         void OnLeftMouseClick();
     }
 
-    private abstract class ControllerState 
+
+    private abstract class ControllerState
     {
         public CardController owner;
     }
+
 
     private class ConfirmPlaceOnTableState : ControllerState, ILeftMouseClickHandler
     {
         public void OnLeftMouseClick()
         {
-            if (!owner.missUpdate) {
+            if (!owner.missUpdate)
+            {
                 InvokePlaceCardOnTable();
             }
             else
@@ -162,7 +166,7 @@ public class CardController : Controller
                 {
                     if (owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance.owner == owner.playerSystem.currentPlayer.value)
                     {
-                       owner.cardSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
+                        owner.cardSystem.PlaceCardOnTable(owner.activeCardViewVar.value.GetComponent<CardView>(), objectClicked);
                     }
                 }
             }
@@ -189,16 +193,18 @@ public class CardController : Controller
             {
                 owner.missUpdate = false;
             }
-            
+
         }
+
+    
 
         private void InvokeCardAttack()
         {
             var objectClicked = owner.GetObjectClicked();
-            
-            if(objectClicked != null)
+
+            if (objectClicked != null)
             {
-                if(objectClicked.GetComponent<PlayerView>() != null)
+                if (objectClicked.GetComponent<PlayerView>() != null)
                 {
                     if (objectClicked.GetComponent<PlayerView>().owner != owner.playerSystem.currentPlayer.value)
                     {
@@ -207,21 +213,21 @@ public class CardController : Controller
                     }
                 }
 
-                if(objectClicked.GetComponent<CardView>() != null)
+                if (objectClicked.GetComponent<CardView>() != null)
                 {
-                    if(objectClicked.GetComponent<CardView>().cardInstance.owner != owner.playerSystem.currentPlayer.value)
+                    if (objectClicked.GetComponent<CardView>().cardInstance.owner != owner.playerSystem.currentPlayer.value)
                     {
                         Debug.Log("Confirmed target is a card...");
                         owner.cardSystem.UseCard(owner.activeCardViewVar.value.GetComponent<CardView>().cardInstance, objectClicked.GetComponent<CardView>().cardInstance);
                     }
-                    
+
                 }
-                
+
             }
 
             Complete();
         }
-        
+
         private void Complete()
         {
             owner.activeCardViewVar.value.GetComponent<CardView>().ToggleActive();
@@ -245,7 +251,7 @@ public class CardController : Controller
 
             if (!owner.missUpdate)
             {
-               if(chosenTargetsList.Count < ability.numberOfTargets)
+                if (chosenTargetsList.Count < ability.numberOfTargets)
                 {
                     AddTarget();
                 }
@@ -265,7 +271,7 @@ public class CardController : Controller
                 if (objectClicked.GetComponent<PlayerView>() != null)
                 {
                     Target target = (Target)objectClicked.GetComponent<PlayerView>().owner;
-                    if(TargetingSystem.IsValid(ability.validTargets, target, true))
+                    if (TargetingSystem.IsValid(ability.validTargets, target, true))
                     {
                         chosenTargetsList.Add(target);
                     }
@@ -291,9 +297,9 @@ public class CardController : Controller
                 }
                 else
                 {
-                    if(chosenCardsViews.Count > 0)
+                    if (chosenCardsViews.Count > 0)
                     {
-                        foreach(CardView cardView in chosenCardsViews)
+                        foreach (CardView cardView in chosenCardsViews)
                         {
                             cardView.ToggleActive();
                         }
@@ -309,18 +315,18 @@ public class CardController : Controller
                 Complete();
             }
 
-            if(chosenTargetsList.Count == ability.numberOfTargets || (owner.playerSystem.enemy.table.Count < ability.numberOfTargets && chosenTargetsList.Count == owner.playerSystem.enemy.table.Count && chosenTargetsList.Count != 0))
+            if (chosenTargetsList.Count == ability.numberOfTargets || (owner.playerSystem.enemy.table.Count < ability.numberOfTargets && chosenTargetsList.Count == owner.playerSystem.enemy.table.Count && chosenTargetsList.Count != 0))
             {
-                   
-                    foreach (CardView cardView in chosenCardsViews)
-                    {
-                        cardView.ToggleActive();
-                    }
-                    Debug.Log("Activating spell ability....");
-                    ability.ActivateAbility(chosenTargetsList, card.abilityInstance);
-                    Complete();
+
+                foreach (CardView cardView in chosenCardsViews)
+                {
+                    cardView.ToggleActive();
+                }
+                Debug.Log("Activating spell ability....");
+                ability.ActivateAbility(chosenTargetsList, card.abilityInstance);
+                Complete();
             }
-           
+
         }
 
         private void Complete()
@@ -331,6 +337,8 @@ public class CardController : Controller
         }
 
     }
+
+ 
 }
 
 
